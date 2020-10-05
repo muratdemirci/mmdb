@@ -1,0 +1,163 @@
+.movie-details-error {
+    display: flex;
+    align-items: center;
+    cursor: default;
+}
+.movie-details-error .fa {
+    font-size: 40px;
+    padding: 0 10px 0 20px;
+    cursor: pointer;
+}
+.movie-details-error h4 {
+    font-size: 24px;
+}
+.movie-details-wrapper {
+    color: white;
+    margin: auto;
+    cursor: default;
+}
+.movie-details-wrapper .movie-details-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.movie-details-wrapper .movie-details-title h1 {
+    background: rgba(132, 127, 134, 0.8);
+    padding: 20px;
+    margin: auto;
+    border-radius: 10px;
+}
+.movie-details-wrapper .movie-details-title .fa {
+    font-size: 20px;
+    padding-left: 20px;
+    cursor: pointer;
+}
+.movie-details-wrapper img.movie-details-backdrop {
+    opacity: 0.1;
+    min-height: 100%;
+    min-width: 1280px;
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.movie-details-wrapper .movie-details-poster-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 25% 450px 450px 80px;
+    grid-gap: 15px;
+    justify-items: center;
+}
+.movie-details-wrapper .movie-details-poster-wrapper .movie-details-poster {
+    border-radius: 10px;
+    border: solid #847f86 10px;
+    /* grid-row: 2; */
+}
+.movie-details-wrapper .movie-details-poster-wrapper .movie-details-info {
+    grid-row: 0.6666666667;
+    display: block;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 90%;
+    height: 90%;
+    background: rgba(132, 127, 134, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    font-family: monospace;
+    /* font-size: 20px; */
+    overflow: visible;
+}
+
+.movie-details-wrapper .movie-details-poster-wrapper .movie-details-reviews {
+    grid-column: 2;
+    grid-row: 0.75;
+    width: 90%;
+    background: rgba(132, 127, 134, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    /* font-size: 20px; */
+}
+@media only screen and (max-width: 549px) {
+    .movie-details-wrapper h1 {
+        width: 80%;
+        font-size: 28px;
+        margin-right: 20px;
+    }
+    .movie-details-wrapper .movie-details-poster-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .movie-details-wrapper .movie-details-poster-wrapper .movie-details-poster {
+        width: 300px;
+        margin: 20px 0;
+        overflow-y: scroll;
+    }
+    .movie-details-wrapper .movie-details-poster-wrapper .movie-details-info {
+        width: calc(100% - 80px);
+        min-width: 300px;
+        min-height: 300px;
+        /* font-size: 22px; */
+        margin: 20px 0;
+    }
+
+    .movie-details-wrapper
+        .movie-details-poster-wrapper
+        .movie-details-reviews {
+        width: calc(100% - 80px);
+        min-width: 300px;
+        /* font-size: 22px; */
+        margin: 20px 0;
+    }
+}
+@media only screen and (min-width: 550px) and (max-width: 1089px) {
+    .movie-details-wrapper .movie-details-title {
+        width: 90%;
+    }
+    .movie-details-wrapper .movie-details-poster-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .movie-details-wrapper .movie-details-poster-wrapper .movie-details-poster {
+        margin: 20px 0;
+    }
+    .movie-details-wrapper .movie-details-poster-wrapper .movie-details-info {
+        width: calc(100% - 250px);
+        min-width: 500px;
+        margin: 20px 0;
+        min-height: 300px;
+        overflow-y: hidden;
+    }
+
+    .movie-details-wrapper
+        .movie-details-poster-wrapper
+        .movie-details-reviews {
+        /* font-size: 20px; */
+        width: calc(100% - 250px);
+        min-width: 500px;
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media only screen and (min-width: 1090px) {
+    .movie-details-wrapper {
+        max-width: 1500px;
+    }
+}
+
+.movie-details-cast {
+    display: flex;
+    /* flex-flow: row wrap; */
+    width: 90%;
+}

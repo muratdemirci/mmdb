@@ -1,0 +1,31 @@
+{
+    "name": "murat-movie-database-api",
+    "version": "1.0.0",
+    "description": "just a simple api",
+    "license": "MIT",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node ./server.js",
+        "dev": "nodemon ./server.js"
+    },
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "cookie-parser": "^1.4.5",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "express-jwt": "^6.0.0",
+        "joi": "^17.1.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongodb": "^3.5.7",
+        "mongoose": "^5.9.25",
+        "morgan": "^1.10.0",
+        "nodemailer": "^6.4.6",
+        "rootpath": "^0.1.2",
+        "swagger-ui-express": "^4.1.4",
+        "yamljs": "^0.3.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.3"
+    }
+}

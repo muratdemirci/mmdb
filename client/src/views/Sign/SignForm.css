@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap');
+
+body {
+    font-family: 'Kanit', sans-serif;
+    background-color: #111;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    color: #fff;
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.568);
+}
+.container > header {
+    font-size: 1.1rem;
+    font-weight: 200;
+    margin: 20px auto 60px auto;
+    position: relative;
+    height: 25px;
+    width: 250px;
+    overflow: hidden;
+}
+
+.header-headings {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    -webkit-transition: all 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition: all 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.header-headings > span {
+    margin: 1px 0;
+}
+.header-headings.sign-in {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+.header-headings.sign-up {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+}
+.header-headings.forgot {
+    -webkit-transform: translateY(-60px);
+    transform: translateY(-60px);
+}
+
+.options {
+    list-style-type: none;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 350px;
+}
+@media screen and (max-width: 380px) {
+    .options {
+        width: 100%;
+    }
+}
+.options > li {
+    cursor: pointer;
+    opacity: 0.5;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.options > li:hover {
+    opacity: 1;
+}
+.options > li.active {
+    opacity: 1;
+}
+.options > li:nth-of-type(2) {
+    margin-left: 15px;
+}
+.options > li:last-of-type {
+    margin-left: auto;
+}
+
+.account-form {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.account-form-fields {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    overflow: hidden;
+    -webkit-transition: all 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition: all 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.account-form-fields.sign-in {
+    max-height: 116px;
+}
+.account-form-fields.sign-up {
+    max-height: 250px;
+}
+.account-form-fields.forgot {
+    max-height: 58px;
+}
+.account-form-fields > input {
+    border: 0;
+    margin-bottom: 10px;
+    padding: 15px;
+    font-size: 1rem;
+    font-family: Nunito, sans-serif;
+    color: #000;
+    border-radius: 5px;
+}
+.account-form-fields > input::-webkit-input-placeholder {
+    color: #aaa;
+}
+.account-form-fields > input::-moz-placeholder {
+    color: #aaa;
+}
+.account-form-fields > input:-ms-input-placeholder {
+    color: #aaa;
+}
+.account-form-fields > input::-ms-input-placeholder {
+    color: #aaa;
+}
+.account-form-fields > input::placeholder {
+    color: #aaa;
+}
+.account-form-fields > input::-webkit-input-placeholder {
+    color: #aaa;
+}
+.account-form-fields > input:-ms-input-placeholder {
+    color: #aaa;
+}
+.account-form-fields > input:focus {
+    outline: none;
+}
+
+.btn-submit-form {
+    border: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    padding: 15px 0;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
+    font-family: Nunito, sans-serif;
+    background: #f5c518;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.13);
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.btn-submit-form:hover {
+    background: #eebf17;
+}
+.btn-submit-form:active,
+.btn-submit-form:focus {
+    outline: none;
+    background: #f5c518;
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 30px 0;
+    text-align: center;
+}
+footer > a {
+    color: #fff;
+    font-weight: 700;
+}
+
+img.background {
+    width: 100%;
+    height: 100%;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}

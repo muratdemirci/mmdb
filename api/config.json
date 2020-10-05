@@ -1,0 +1,13 @@
+﻿{
+    "connectionString": "mongodb://localhost:27017/mmdb",
+    "secret": "dreadpiratemurat",
+    "emailFrom": "noreply@mmdb.com",
+    "smtpOptions": {
+        "host": "smtp.ethereal.email",
+        "port": 587,
+        "auth": {
+            "user": "marisol.renner@ethereal.email",
+            "pass": "YxKywfvRAeZgvB4xdC"
+        }
+    }
+}
