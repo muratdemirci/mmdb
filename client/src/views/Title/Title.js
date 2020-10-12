@@ -83,27 +83,26 @@ class Title extends Component {
                                 <p>{this.state.movieInfo.overview}</p>
                             </div>
                             <div>
-                                <h4>
-                                    ⭐{this.state.movieInfo.vote_average}/10
-                                </h4>
+                                ⭐{this.state.movieInfo.vote_average}/10 |
+                                asdsad
                             </div>
                             <div className="movie-details-cast">
                                 <Cast data={this.state.movieCredits.cast} />
                             </div>
                             <Trailer
+                                className="movie-details-trailer"
                                 name={this.state.movieInfo.title}
                                 release={releaseDate}
                             />
                         </div>
-
-                        <div className="related-movies">
-                            <Row
-                                title={'More Like This'}
-                                genre={'similar'}
-                                movieId={this.props.match.params.id}
-                                isLargeRow={true}
-                            />
-                        </div>
+                    </div>
+                    <div className="related-movies">
+                        <Row
+                            title={'More Like This'}
+                            genre={'similar'}
+                            movieId={this.props.match.params.id}
+                            isLargeRow={true}
+                        />
                     </div>
                 </div>
             </>

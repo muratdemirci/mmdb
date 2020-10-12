@@ -4,7 +4,7 @@ import movieTrailer from 'movie-trailer';
 
 function Trailer(props) {
     const opts = {
-        height: '390',
+        height: '280px',
         width: '100%',
         playerVars: {
             autoplay: 0,

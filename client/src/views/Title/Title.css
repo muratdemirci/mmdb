@@ -29,7 +29,6 @@
 .movie-details-wrapper .movie-details-poster-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 25% 450px 450px 80px;
     grid-gap: 15px;
     justify-items: center;
 }
