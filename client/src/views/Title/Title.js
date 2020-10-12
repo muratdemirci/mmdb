@@ -84,7 +84,7 @@ class Title extends Component {
                             </div>
                             <div>
                                 ⭐{this.state.movieInfo.vote_average}/10 |
-                                asdsad
+                                runtime | genres | release date
                             </div>
                             <div className="movie-details-cast">
                                 <Cast data={this.state.movieCredits.cast} />
