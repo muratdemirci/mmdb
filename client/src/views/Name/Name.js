@@ -30,3 +30,31 @@
 //     "imdb_id": "nm0000354",
 //     "homepage": null
 //   }
+
+//get images
+
+// https://api.themoviedb.org/3/person/1892/images?api_key=4d4ed145d3584846f5922b6a467e1f85
+
+//https://api.themoviedb.org/3/person/1892/movie_credits?api_key=4d4ed145d3584846f5922b6a467e1f85&language=en-US
+
+// "cast": [
+//     {
+//       "character": "Will Hunting",
+//       "credit_id": "52fe4249c3a36847f8012657",
+//       "release_date": "1997-12-05",
+//       "vote_count": 7826,
+//       "video": false,
+//       "adult": false,
+//       "vote_average": 8.1,
+//       "title": "Good Will Hunting",
+//       "genre_ids": [
+//         18
+//       ],
+//       "original_language": "en",
+//       "original_title": "Good Will Hunting",
+//       "popularity": 25.496,
+//       "id": 489,
+//       "backdrop_path": "/vbpZxGxZQGkCZdYyQqoM26YS98.jpg",
+//       "overview": "Will Hunting has a genius-level IQ but chooses to work as a janitor at MIT. When he solves a difficult graduate-level math problem, his talents are discovered by Professor Gerald Lambeau, who decides to help the misguided youth reach his potential. When Will is arrested for attacking a police officer, Professor Lambeau makes a deal to get leniency for him if he will get treatment from therapist Sean Maguire.",
+//       "poster_path": "/bABCBKYBK7A5G1x0FzoeoNfuj2.jpg"
+//     },
