@@ -1,6 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import axios from '../config/axios';
-// import requests from '../config/requests';
 import {POSTERURL} from '../config/config';
 import {getUpcoming} from '../services/titleAPI';
 

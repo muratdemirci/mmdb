@@ -7,8 +7,9 @@ import {
     getMovieReviews,
     getSimilarMovies,
 } from '../../services/titleAPI';
-import Reviews from '../../components/Reviews/Reviews';
 import Cast from '../../components/Cast/Cast';
+import Trailer from '../../components/Trailer/Trailer';
+import Row from '../../partials/Row';
 import './Title.css';
 
 class Title extends Component {
@@ -29,6 +30,7 @@ class Title extends Component {
                 const movieInfo = await getMovieDetailsById(
                     this.props.match.params.id,
                 );
+                console.log(movieInfo);
                 const movieReviews = await getMovieReviews(
                     this.props.match.params.id,
                 );
@@ -53,42 +55,18 @@ class Title extends Component {
     }
 
     render() {
-        let reviews;
-        let otherReviews;
-
-        if (this.state.movieReviews && this.state.movieReviews.length > 2) {
-            const prevReviews = this.state.movieReviews.slice(0, 2);
-            otherReviews = this.state.movieReviews.length - 2;
-            reviews = prevReviews.map((review) => {
-                return (
-                    <Reviews
-                        key={review.id}
-                        author={review.author}
-                        review={review}
-                    />
-                );
-            });
-        } else if (
-            this.state.movieReviews &&
-            this.state.movieReviews.length <= 2
-        ) {
-            reviews = this.state.movieReviews.map((review) => {
-                return (
-                    <Reviews
-                        key={review.id}
-                        author={review.author}
-                        review={review}
-                    />
-                );
-            });
-        }
+        let releaseDate = this.state.movieInfo.release_date
+            ? this.state.movieInfo.release_date.substring(0, 4)
+            : '';
 
         return (
             <>
                 <Navbar />
                 <div className="movie-details-wrapper">
                     <div className="movie-details-title">
-                        <h1>{this.state.movieInfo.title}</h1>
+                        <h1>
+                            {this.state.movieInfo.title} {`(${releaseDate})`}
+                        </h1>
                     </div>
                     <img
                         className="movie-details-backdrop"
@@ -97,42 +75,35 @@ class Title extends Component {
                     />
                     <div className="movie-details-poster-wrapper">
                         <img
-                            className="movie-details-poster"
                             src={`${BASE_POSTER_PATH}/w500${this.state.movieInfo.poster_path}`}
                             alt="movie poster"
                         />
                         <div className="movie-details-info">
                             <div>
-                                <strong>Movie Overview:</strong>{' '}
-                                {this.state.movieInfo.overview}
+                                <p>{this.state.movieInfo.overview}</p>
                             </div>
                             <div>
-                                <strong>Release Date:</strong>{' '}
-                                {this.state.movieInfo.release_date}
-                            </div>
-                            <div>
-                                <strong>Average Rating:</strong>{' '}
-                                {this.state.movieInfo.vote_average}
+                                <h4>
+                                    ⭐{this.state.movieInfo.vote_average}/10
+                                </h4>
                             </div>
                             <div className="movie-details-cast">
                                 <Cast data={this.state.movieCredits.cast} />
                             </div>
+                            <Trailer
+                                name={this.state.movieInfo.title}
+                                release={releaseDate}
+                            />
                         </div>
-                        {reviews && reviews.length > 0 && (
-                            <div className="movie-details-reviews">
-                                <strong>Reviews:</strong>
-                                {reviews}
-                                {otherReviews && (
-                                    <p>
-                                        {otherReviews} additional
-                                        {otherReviews === 1
-                                            ? ' review'
-                                            : ' reviews'}{' '}
-                                        not shown here
-                                    </p>
-                                )}
-                            </div>
-                        )}
+
+                        <div className="related-movies">
+                            <Row
+                                title={'More Like This'}
+                                genre={'similar'}
+                                movieId={this.props.match.params.id}
+                                isLargeRow={true}
+                            />
+                        </div>
                     </div>
                 </div>
             </>

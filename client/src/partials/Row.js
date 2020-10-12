@@ -1,18 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import {POSTERURL} from '../config/config';
-// import YouTube from 'react-youtube';
 import {useHistory} from 'react-router-dom';
-// import movieTrailer from 'movie-trailer';
 import {
     getMoviesByGenre,
     getTrendingMovies,
     getTopRatedMovies,
+    getSimilarMovies,
 } from '../services/titleAPI';
 import '../assets/css/App.css';
 
-function Row({title, isLargeRow, genre}) {
+function Row({title, isLargeRow, genre, movieId}) {
     const [movies, setMovies] = useState([]);
-    // const [trailerUrl, setTrailerUrl] = useState('');
     const history = useHistory();
 
     useEffect(() => {
@@ -26,6 +24,10 @@ function Row({title, isLargeRow, genre}) {
                     let topRatedMovies = await getTopRatedMovies();
                     setMovies(topRatedMovies);
                     return topRatedMovies;
+                case 'similar':
+                    let similarMovies = await getSimilarMovies(movieId);
+                    setMovies(similarMovies);
+                    return similarMovies;
                 default:
                     let moviesByGenres = await getMoviesByGenre(genre);
                     setMovies(moviesByGenres);
@@ -33,28 +35,12 @@ function Row({title, isLargeRow, genre}) {
             }
         }
         fetchData();
-    }, [genre]);
-
-    // const opts = {
-    //     height: '390',
-    //     width: '100%',
-    //     playerVars: {
-    //         autoplay: 1,
-    //     },
-    // };
+    }, [genre, movieId]);
 
     const handleClick = (movie) => {
         console.log(movie);
         history.push(`/title/${movie.id}`);
-        // if (trailerUrl) {
-        //     setTrailerUrl('')
-        // } else {
-        //     movieTrailer(movie?.name || "")
-        //         .then((url) => {
-        //             const urlParams = new URLSearchParams(new URL(url).search);
-        //             setTrailerUrl(urlParams.get("v"));
-        //         }).catch((error) => console.log(error));
-        // }
+        window.location.reload();
     };
 
     return (

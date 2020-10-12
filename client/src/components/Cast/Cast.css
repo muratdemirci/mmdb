@@ -2,12 +2,7 @@
     width: calc(50% - 10px);
     margin-bottom: 10px;
     margin-right: 10px;
-
     padding: 5px;
-    border-radius: 2px;
-    background: white;
-
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 @media only screen and (min-width: 480px) {
     .cast_member {
@@ -23,14 +18,22 @@
 .cast_name {
     font-size: 13px;
     margin-bottom: 0;
-    color: black;
+    color: #ffffff;
 }
 .cast_member img {
     margin-bottom: 10px;
     max-width: 100%;
     width: 100%;
+    border-radius: 50%;
 }
 
 .cast_character {
-    color: black;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.movie-details-wrapper .movie-details-cast {
+    margin-top: 20px;
+    display: flex;
+    text-align: center;
 }

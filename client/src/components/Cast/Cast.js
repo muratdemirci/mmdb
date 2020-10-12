@@ -1,4 +1,5 @@
-import React, {Component, useState} from 'react';
+import React from 'react';
+import {MOBILEPOSTERURL} from '../../config/config';
 import './Cast.css';
 
 const Cast = (props) => {
@@ -7,7 +8,7 @@ const Cast = (props) => {
             return (
                 <div className="cast_member" key={star.name}>
                     <img
-                        src={`https://image.tmdb.org/t/p/w138_and_h175_bestv2/${star.profile_path}`}
+                        src={`${MOBILEPOSTERURL}/w138_and_h175_bestv2/${star.profile_path}`}
                         alt={star.name}
                         title={star.name}
                     />

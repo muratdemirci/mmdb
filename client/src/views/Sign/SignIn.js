@@ -23,11 +23,10 @@ function Form({option}) {
     const {email, password, confirmPassword} = inputs;
     const loggingIn = useSelector((state) => state.authentication.loggingIn);
     const dispatch = useDispatch();
-
     // reset login status
     useEffect(() => {
         dispatch(userActions.logout());
-    }, []);
+    }, [dispatch]);
 
     function handleChange(e) {
         const {name, value} = e.target;
@@ -45,7 +44,7 @@ function Form({option}) {
                 }
                 break;
             case 2:
-                // console.log('isgn up');
+                // console.log('sign up');
                 setSubmitted(true);
                 if (email && password && confirmPassword) {
                     const user = {
@@ -63,6 +62,7 @@ function Form({option}) {
                 break;
             case 3:
                 // console.log('reset pass');
+                //api side is done, tie up this with redux etc...
                 break;
             default:
                 console.log(`Sorry dorothy but ${option} not exist.`);

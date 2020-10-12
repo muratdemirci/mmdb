@@ -164,8 +164,8 @@ export const getSimilarMovies = async (movieId) => {
         const response = await axios.get(
             `${BASE_MOVIE_PATH}${movieId}/similar?api_key=${API_KEY}`,
         );
-        console.log(response.data);
-        return response.data;
+        // console.log(response.data.results);
+        return response.data.results;
     } catch (err) {
         console.error(`There was a problem finding the similar movies: ${err}`);
         throw err;
