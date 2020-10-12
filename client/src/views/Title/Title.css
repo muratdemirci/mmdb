@@ -50,6 +50,22 @@
     font-size: 16px;
     overflow: visible;
 }
+.movie-details-wrapper .movie-details-poster-wrapper .movie-details-info a:link,
+a:visited {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+.movie-details-wrapper
+    .movie-details-poster-wrapper
+    .movie-details-info
+    a:hover,
+a:active {
+    color: #000000;
+    text-align: center;
+    text-decoration: underline;
+}
 
 @media only screen and (max-width: 549px) {
     .movie-details-wrapper h1 {

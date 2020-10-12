@@ -19,6 +19,7 @@ class Title extends Component {
             movieInfo: [],
             movieReviews: [],
             movieCredits: [],
+            movieGenres: [],
             loading: true,
             error: false,
         };
@@ -59,6 +60,12 @@ class Title extends Component {
             ? this.state.movieInfo.release_date.substring(0, 4)
             : '';
 
+        function time_convert(num) {
+            var hours = Math.floor(num / 60);
+            var minutes = num % 60;
+            return ' ' + hours + 'h ' + minutes + 'min';
+        }
+
         return (
             <>
                 <Navbar />
@@ -84,7 +91,16 @@ class Title extends Component {
                             </div>
                             <div>
                                 ⭐{this.state.movieInfo.vote_average}/10 |
-                                runtime | genres | release date
+                                {time_convert(this.state.movieInfo.runtime)} |{' '}
+                                {(this.state.movieInfo.genres || []).map(
+                                    (genre, index) => (
+                                        <a
+                                            href={`/genre/${genre.name.toLowerCase()}`}>
+                                            {(index ? ', ' : '') + genre.name}
+                                        </a>
+                                    ),
+                                )}{' '}
+                                | {this.state.movieInfo.release_date}
                             </div>
                             <div className="movie-details-cast">
                                 <Cast data={this.state.movieCredits.cast} />
