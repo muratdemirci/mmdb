@@ -6,6 +6,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import SignIn from './views/Sign/SignIn';
 import Title from './views/Title/Title';
+import Name from './views/Name/Name';
 
 import {Provider} from 'react-redux';
 import {store, history} from './redux/_helpers';
@@ -23,6 +24,10 @@ ReactDOM.render(
                 <Route
                     path="/title/:id"
                     render={(props) => <Title {...props} />}
+                />
+                <Route
+                    path="/name/:id"
+                    render={(props) => <Name {...props} />}
                 />
                 <Route path="/" render={(props) => <App {...props} />} />
                 <Redirect to="/" />

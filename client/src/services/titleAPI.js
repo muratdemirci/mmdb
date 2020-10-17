@@ -21,9 +21,7 @@ export const getAllGenres = async () => {
         // console.log(genres);
         return genres;
     } catch (err) {
-        console.error(
-            `Something went wrong fetching the now playing data: ${err}`,
-        );
+        console.error(`Something went wrong fetching the all genres: ${err}`);
         throw err;
     }
 };
@@ -37,7 +35,7 @@ export const getMoviesByGenre = async (genreId) => {
         return response.data.results;
     } catch (err) {
         console.error(
-            `Something went wrong fetching the now playing data: ${err}`,
+            `Something went wrong fetching the movies genres: ${err}`,
         );
         throw err;
     }

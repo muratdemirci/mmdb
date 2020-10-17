@@ -61,7 +61,6 @@ function Row({title, isLargeRow, genre, movieId}) {
                     />
                 ))}
             </div>
-            {/* {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />} */}
         </div>
     );
 }

@@ -1,3 +1,19 @@
+import React, {Component} from 'react';
+import Navbar from '../../partials/Navbar';
+
+class Name extends Component {
+    render() {
+        return (
+            <>
+                <Navbar />
+                <h1>sa</h1>
+            </>
+        );
+    }
+}
+
+export default Name;
+
 // https://api.themoviedb.org/3/person/1892?api_key=4d4ed145d3584846f5922b6a467e1f85&language=en-US
 
 // {
@@ -58,3 +74,5 @@
 //       "overview": "Will Hunting has a genius-level IQ but chooses to work as a janitor at MIT. When he solves a difficult graduate-level math problem, his talents are discovered by Professor Gerald Lambeau, who decides to help the misguided youth reach his potential. When Will is arrested for attacking a police officer, Professor Lambeau makes a deal to get leniency for him if he will get treatment from therapist Sean Maguire.",
 //       "poster_path": "/bABCBKYBK7A5G1x0FzoeoNfuj2.jpg"
 //     },
+
+// https://api.themoviedb.org/3/person/1892/combined_credits?api_key=4d4ed145d3584846f5922b6a467e1f85&language=en-US

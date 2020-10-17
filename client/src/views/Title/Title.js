@@ -4,7 +4,6 @@ import {BASE_BACKDROP_PATH, BASE_POSTER_PATH} from '../../config/config';
 import {
     getMovieCreditsById,
     getMovieDetailsById,
-    getMovieReviews,
     getSimilarMovies,
 } from '../../services/titleAPI';
 import Cast from '../../components/Cast/Cast';
@@ -25,34 +24,25 @@ class Title extends Component {
         };
     }
 
-    async componentDidMount() {
-        if (this.props.match.params.id) {
-            try {
-                const movieInfo = await getMovieDetailsById(
-                    this.props.match.params.id,
-                );
-                console.log(movieInfo);
-                const movieReviews = await getMovieReviews(
-                    this.props.match.params.id,
-                );
-                const movieCredits = await getMovieCreditsById(
-                    this.props.match.params.id,
-                );
-                const similarMovies = await getSimilarMovies(
-                    this.props.match.params.id,
-                );
-                this.setState({
-                    loading: false,
-                    movieInfo,
-                    movieReviews,
-                    movieCredits,
-                    similarMovies,
-                    error: false,
-                });
-            } catch (err) {
-                this.setState({loading: false, error: true});
-            }
-        }
+    componentDidMount() {
+        const handleStates = async () => {
+            const movieInfo = await getMovieDetailsById(
+                this.props.match.params.id,
+            );
+            const movieCredits = await getMovieCreditsById(
+                this.props.match.params.id,
+            );
+            const similarMovies = await getSimilarMovies(
+                this.props.match.params.id,
+            );
+            this.setState({
+                loading: false,
+                movieInfo,
+                movieCredits,
+                similarMovies,
+            });
+        };
+        handleStates();
     }
 
     render() {
@@ -66,63 +56,82 @@ class Title extends Component {
             return ' ' + hours + 'h ' + minutes + 'min';
         }
 
-        return (
-            <>
-                <Navbar />
-                <div className="movie-details-wrapper">
-                    <div className="movie-details-title">
-                        <h1>
-                            {this.state.movieInfo.title} {`(${releaseDate})`}
-                        </h1>
-                    </div>
-                    <img
-                        className="movie-details-backdrop"
-                        src={`${BASE_BACKDROP_PATH}${this.state.movieInfo.backdrop_path}`}
-                        alt="movie background"
-                    />
-                    <div className="movie-details-poster-wrapper">
+        if (!this.state.loading) {
+            return (
+                <>
+                    <Navbar />
+                    <div className="movie-details-wrapper">
+                        <div className="movie-details-title">
+                            <h1>
+                                {this.state.movieInfo.title}{' '}
+                                {`(${releaseDate})`}
+                            </h1>
+                        </div>
                         <img
-                            src={`${BASE_POSTER_PATH}/w500${this.state.movieInfo.poster_path}`}
-                            alt="movie poster"
+                            className="movie-details-backdrop"
+                            src={`${BASE_BACKDROP_PATH}${this.state.movieInfo.backdrop_path}`}
+                            alt="movie background"
                         />
-                        <div className="movie-details-info">
-                            <div>
-                                <p>{this.state.movieInfo.overview}</p>
+                        <div className="movie-details-poster-wrapper">
+                            <img
+                                src={`${BASE_POSTER_PATH}/w500${this.state.movieInfo.poster_path}`}
+                                alt="movie poster"
+                            />
+                            <div className="movie-details-info">
+                                <div>
+                                    <p>{this.state.movieInfo.overview}</p>
+                                </div>
+                                <div>
+                                    <span role="img" aria-label="star">
+                                        ⭐
+                                    </span>
+                                    {this.state.movieInfo.vote_average}/10 |
+                                    {time_convert(this.state.movieInfo.runtime)}{' '}
+                                    |{' '}
+                                    {(this.state.movieInfo.genres || []).map(
+                                        (genre, index) => (
+                                            <span key={genre.id}>
+                                                <a
+                                                    href={`/genre/${genre.name.toLowerCase()}`}>
+                                                    {(index ? ', ' : '') +
+                                                        genre.name}
+                                                </a>
+                                            </span>
+                                        ),
+                                    )}{' '}
+                                    | {this.state.movieInfo.release_date}
+                                </div>
+                                <div className="movie-details-cast">
+                                    <Cast data={this.state.movieCredits.cast} />
+                                </div>
+                                <Trailer
+                                    className="movie-details-trailer"
+                                    name={this.state.movieInfo.title}
+                                    release={releaseDate}
+                                />
                             </div>
-                            <div>
-                                ⭐{this.state.movieInfo.vote_average}/10 |
-                                {time_convert(this.state.movieInfo.runtime)} |{' '}
-                                {(this.state.movieInfo.genres || []).map(
-                                    (genre, index) => (
-                                        <a
-                                            href={`/genre/${genre.name.toLowerCase()}`}>
-                                            {(index ? ', ' : '') + genre.name}
-                                        </a>
-                                    ),
-                                )}{' '}
-                                | {this.state.movieInfo.release_date}
-                            </div>
-                            <div className="movie-details-cast">
-                                <Cast data={this.state.movieCredits.cast} />
-                            </div>
-                            <Trailer
-                                className="movie-details-trailer"
-                                name={this.state.movieInfo.title}
-                                release={releaseDate}
+                        </div>
+                        <div className="related-movies">
+                            <Row
+                                title={'More Like This'}
+                                genre={'similar'}
+                                movieId={this.props.match.params.id}
+                                isLargeRow={true}
                             />
                         </div>
                     </div>
-                    <div className="related-movies">
-                        <Row
-                            title={'More Like This'}
-                            genre={'similar'}
-                            movieId={this.props.match.params.id}
-                            isLargeRow={true}
-                        />
+                </>
+            );
+        } else {
+            return (
+                <>
+                    <Navbar />
+                    <div>
+                        <h1>Loading...</h1>
                     </div>
-                </div>
-            </>
-        );
+                </>
+            );
+        }
     }
 }
 
