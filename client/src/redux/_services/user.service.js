@@ -32,6 +32,7 @@ function login(email, password) {
 
 function logout() {
     // remove user from local storage to log user out
+    // add access token reject endpoint here
     localStorage.removeItem('user');
 }
 

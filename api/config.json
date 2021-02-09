@@ -1,5 +1,5 @@
 ﻿{
-    "connectionString": "mongodb://localhost:27017/mmdb",
+    "connectionString": "",
     "secret": "dreadpiratemurat",
     "emailFrom": "noreply@mmdb.com",
     "smtpOptions": {

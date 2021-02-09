@@ -30,7 +30,7 @@ function Navbar() {
                     src="https://upload.wikimedia.org/wikipedia/commons/2/24/Missing_avatar.svg"
                     alt="imdb logo"
                 />
-                <h4 className="navbar__userInfo"> {user.firstName} </h4>
+                <h4 className="navbar__userInfo"> {user.email} </h4>
             </div>
         );
     } else {

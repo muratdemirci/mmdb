@@ -258,9 +258,6 @@ function randomTokenString() {
 function basicDetails(user) {
     const {
         id,
-        title,
-        firstName,
-        lastName,
         email,
         role,
         created,
@@ -269,9 +266,6 @@ function basicDetails(user) {
     } = user;
     return {
         id,
-        title,
-        firstName,
-        lastName,
         email,
         role,
         created,

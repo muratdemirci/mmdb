@@ -47,15 +47,6 @@ paths:
                                     id:
                                         type: string
                                         example: '5eb12e197e06a76ccdefc121'
-                                    title:
-                                        type: string
-                                        example: 'Mr'
-                                    firstName:
-                                        type: string
-                                        example: 'Murat'
-                                    lastName:
-                                        type: string
-                                        example: 'Demirci'
                                     email:
                                         type: string
                                         example: 'murat@example.com'
@@ -110,15 +101,6 @@ paths:
                                     id:
                                         type: string
                                         example: '5eb12e197e06a76ccdefc121'
-                                    title:
-                                        type: string
-                                        example: 'Mr'
-                                    firstName:
-                                        type: string
-                                        example: 'Murat'
-                                    lastName:
-                                        type: string
-                                        example: 'Demirci'
                                     email:
                                         type: string
                                         example: 'murat@example.com'
@@ -202,15 +184,6 @@ paths:
                         schema:
                             type: object
                             properties:
-                                title:
-                                    type: string
-                                    example: 'Mr'
-                                firstName:
-                                    type: string
-                                    example: 'Murat'
-                                lastName:
-                                    type: string
-                                    example: 'Demirci'
                                 email:
                                     type: string
                                     example: 'murat@example.com'
@@ -223,9 +196,6 @@ paths:
                                 acceptTerms:
                                     type: boolean
                             required:
-                                - title
-                                - firstName
-                                - lastName
                                 - email
                                 - password
                                 - confirmPassword
@@ -407,15 +377,6 @@ paths:
                                         id:
                                             type: string
                                             example: '5eb12e197e06a76ccdefc121'
-                                        title:
-                                            type: string
-                                            example: 'Mr'
-                                        firstName:
-                                            type: string
-                                            example: 'Murat'
-                                        lastName:
-                                            type: string
-                                            example: 'Demirci'
                                         email:
                                             type: string
                                             example: 'murat@example.com'
@@ -443,15 +404,6 @@ paths:
                         schema:
                             type: object
                             properties:
-                                title:
-                                    type: string
-                                    example: 'Mr'
-                                firstName:
-                                    type: string
-                                    example: 'Murat'
-                                lastName:
-                                    type: string
-                                    example: 'Demirci'
                                 email:
                                     type: string
                                     example: 'murat@example.com'
@@ -465,9 +417,6 @@ paths:
                                     type: string
                                     enum: [Admin, User]
                             required:
-                                - title
-                                - firstName
-                                - lastName
                                 - email
                                 - password
                                 - confirmPassword
@@ -483,15 +432,6 @@ paths:
                                     id:
                                         type: string
                                         example: '5eb12e197e06a76ccdefc121'
-                                    title:
-                                        type: string
-                                        example: 'Mr'
-                                    firstName:
-                                        type: string
-                                        example: 'Murat'
-                                    lastName:
-                                        type: string
-                                        example: 'Demirci'
                                     email:
                                         type: string
                                         example: 'murat@example.com'
@@ -539,15 +479,6 @@ paths:
                                     id:
                                         type: string
                                         example: '5eb12e197e06a76ccdefc121'
-                                    title:
-                                        type: string
-                                        example: 'Mr'
-                                    firstName:
-                                        type: string
-                                        example: 'Jason'
-                                    lastName:
-                                        type: string
-                                        example: 'Watmore'
                                     email:
                                         type: string
                                         example: 'jason@example.com'
@@ -577,15 +508,6 @@ paths:
                         schema:
                             type: object
                             properties:
-                                title:
-                                    type: string
-                                    example: 'Mr'
-                                firstName:
-                                    type: string
-                                    example: 'Murat'
-                                lastName:
-                                    type: string
-                                    example: 'Demirci'
                                 email:
                                     type: string
                                     example: 'murat@example.com'
@@ -609,15 +531,6 @@ paths:
                                     id:
                                         type: string
                                         example: '5eb12e197e06a76ccdefc121'
-                                    title:
-                                        type: string
-                                        example: 'Mr'
-                                    firstName:
-                                        type: string
-                                        example: 'Murat'
-                                    lastName:
-                                        type: string
-                                        example: 'Demirci'
                                     email:
                                         type: string
                                         example: 'murat@example.com'

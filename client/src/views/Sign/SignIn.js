@@ -48,15 +48,12 @@ function Form({option}) {
                 setSubmitted(true);
                 if (email && password && confirmPassword) {
                     const user = {
-                        title: ' ',
-                        firstName: ' ',
-                        lastName: ' ',
                         email: email,
                         password: password,
                         confirmPassword: confirmPassword,
                         acceptTerms: true,
                     };
-                    dispatch(userActions.register(user));
+                dispatch(userActions.register(user));                    
                 }
 
                 break;
@@ -146,7 +143,9 @@ function SignForm() {
             <img
                 className="background"
                 src={`${POSTERURL}${movie?.backdrop_path}`}
+                // TODO: movie.poster_path : movie.backdrop_path condition                
                 alt=""
+                // TODO: quick alt and title
             />
             <div className="container">
                 <header>
