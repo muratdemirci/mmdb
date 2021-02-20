@@ -4,9 +4,9 @@ import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom';
 import './assets/css/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import SignIn from './views/Sign/SignIn';
-import Title from './views/Title/Title';
-import Name from './views/Name/Name';
+import SignIn from './views/Sign';
+import Title from './views/Title';
+import Name from './views/Name';
 
 import {Provider} from 'react-redux';
 import {store, history} from './redux/_helpers';

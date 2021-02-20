@@ -1,5 +1,5 @@
 import React, {useState, useEffect, Component} from 'react';
-import './SignForm.css';
+import './style.css';
 import {getUpcoming} from '../../services/titleAPI';
 import {POSTERURL} from '../../config/config';
 import {useDispatch, useSelector} from 'react-redux';

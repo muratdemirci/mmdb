@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "history": "^5.0.0",
     "is-empty": "^1.2.0",
     "jwt-decode": "^2.2.0",
     "movie-trailer": "^2.0.6",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",

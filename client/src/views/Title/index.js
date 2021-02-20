@@ -9,7 +9,7 @@ import {
 import Cast from '../../components/Cast/Cast';
 import Trailer from '../../components/Trailer/Trailer';
 import Row from '../../partials/Row';
-import './Title.css';
+import './style.css';
 
 class Title extends Component {
     constructor() {

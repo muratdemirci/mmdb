@@ -22,8 +22,7 @@ function Banner() {
             className="banner"
             style={{
                 backgroundSize: 'cover',
-                backgroundImage: `url(${POSTERURL}${movie?.backdrop_path})`,
-                backgroundPosition: 'center center',
+                backgroundImage: `url(${POSTERURL}${movie?.backdrop_path})`                
             }}>
             <div className="banner__contents">
                 <h1 className="banner__title">

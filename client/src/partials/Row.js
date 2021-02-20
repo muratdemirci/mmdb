@@ -37,8 +37,7 @@ function Row({title, isLargeRow, genre, movieId}) {
         fetchData();
     }, [genre, movieId]);
 
-    const handleClick = (movie) => {
-        console.log(movie);
+    const handleClick = (movie) => {        
         history.push(`/title/${movie.id}`);
         window.location.reload();
     };
