@@ -31,10 +31,9 @@ function login(email, password) {
 }
 
 function logout() {
-    // remove user from local storage to log user out
-    // add access token reject endpoint here    
+    // remove user from local storage to log user out    
     localStorage.removeItem('user');
-    window.location.replace("http://localhost:/3000");
+    // TODO: add access token reject endpoint here    
 }
 
 function getAll() {

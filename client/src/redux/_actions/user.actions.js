@@ -51,10 +51,7 @@ function register(user) {
         userService.register(user).then(
             (user) => {
                 dispatch(success());
-                // history.push('/signin');
-                // window.location.replace('/signin');
                 dispatch(alertActions.success('Registration successful'));
-                //TODO: alert message then redirect sign
             },
             (error) => {
                 dispatch(failure(error.toString()));

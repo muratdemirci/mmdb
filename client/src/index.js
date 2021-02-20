@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import SignIn from './views/Sign';
 import Title from './views/Title';
 import Name from './views/Name';
+import Logout from './views/Logout';
 
 import {Provider} from 'react-redux';
 import {store, history} from './redux/_helpers';
@@ -28,6 +29,10 @@ ReactDOM.render(
                 <Route
                     path="/name/:id"
                     render={(props) => <Name {...props} />}
+                />
+                <Route
+                    path="/logout"
+                    render={(props => <Logout {...props} />)}
                 />
                 <Route path="/" render={(props) => <App {...props} />} />
                 <Redirect to="/" />
