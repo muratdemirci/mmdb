@@ -1,4 +1,4 @@
-﻿const config = require('config.json');
+﻿const {secret} = process.env.CONFIG_SECRET;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
@@ -236,7 +236,7 @@ function hash(password) {
 
 function generateJwtToken(user) {
     // create a jwt token containing the user id that expires in 15 minutes
-    return jwt.sign({sub: user.id, id: user.id}, config.secret, {
+    return jwt.sign({sub: user.id, id: user.id}, secret, {
         expiresIn: '15m',
     });
 }

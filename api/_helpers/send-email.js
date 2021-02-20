@@ -1,9 +1,20 @@
 const nodemailer = require('nodemailer');
-const config = require('config.json');
 
 module.exports = sendEmail;
 
-async function sendEmail({ to, subject, html, from = config.emailFrom }) {
-    const transporter = nodemailer.createTransport(config.smtpOptions);
+const mailOptions =  {
+    "emailFrom": process.env.CONFIG_EMAIL_FROM,
+    "smtpOptions": {
+        "host": process.env.CONFIG_SMTP_OPTIONS_HOST,
+        "port": process.env.CONFIG_SMTP_OPTIONS_PORT,
+        "auth": {
+            "user": process.env.CONFIG_SMTP_OPTIONS_AUTH_USER,
+            "pass": process.env.CONFIG_SMTP_OPTIONS_AUTH_PASS
+        }
+    }
+}
+
+async function sendEmail({ to, subject, html, from = mailOptions.emailFrom }) {
+    const transporter = nodemailer.createTransport(mailOptions.smtpOptions);
     await transporter.sendMail({ from, to, subject, html });
 }
