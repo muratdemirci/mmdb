@@ -2,6 +2,7 @@ import {userConstants} from '../_constants';
 import {userService} from '../_services';
 import {alertActions} from './';
 import {history} from '../_helpers';
+import cogoToast from 'cogo-toast';
 
 export const userActions = {
     login,
@@ -16,14 +17,20 @@ function login(email, password) {
         dispatch(request({email}));
 
         userService.login(email, password).then(
-            (user) => {
-                dispatch(success(user));
-                history.push('/');
-                window.location.replace('/');
+            (user) => {             
+                cogoToast.loading('Logging in... 🚀').then(() => {
+                    cogoToast.success('Login successeful 🛸');
+                    setTimeout(() => { 
+                        dispatch(success(user));
+                        history.push('/');
+                        window.location.replace('/') 
+                    },1000);                      
+                });
             },
             (error) => {
                 dispatch(failure(error.toString()));
                 dispatch(alertActions.error(error.toString()));
+                cogoToast.error(`${error.toString()} 🚫`);
             },
         );
     };
@@ -52,10 +59,12 @@ function register(user) {
             (user) => {
                 dispatch(success());
                 dispatch(alertActions.success('Registration successful'));
+                cogoToast.success('Registration successful,you can login now 🌠');
             },
             (error) => {
                 dispatch(failure(error.toString()));
                 dispatch(alertActions.error(error.toString()));
+                cogoToast.error(`${error.toString()} 🚫`);
             },
         );
     };

@@ -36,15 +36,13 @@ function Form({option}) {
     const preSubmit = (e) => {
         e.preventDefault();
         switch (option) {
-            case 1:
-                // console.log('sign in');
+            case 1:                
                 setSubmitted(true);
                 if (email && password) {
                     dispatch(userActions.login(email, password));
                 }
                 break;
             case 2:
-                // console.log('sign up');
                 setSubmitted(true);
                 if (email && password && confirmPassword) {
                     const user = {
@@ -58,7 +56,6 @@ function Form({option}) {
 
                 break;
             case 3:
-                // console.log('reset pass');
                 //api side is done, tie up this with redux etc...
                 break;
             default:

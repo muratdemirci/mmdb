@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.21.1",
+    "cogo-toast": "^4.2.3",
     "history": "^5.0.0",
     "is-empty": "^1.2.0",
     "jwt-decode": "^2.2.0",
