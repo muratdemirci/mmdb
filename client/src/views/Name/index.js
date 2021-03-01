@@ -1,7 +1,32 @@
 import React, {Component} from 'react';
 import Navbar from '../../partials/Navbar';
+import {
+    getPersonDetails,
+} from '../../services/nameAPI';
 
 class Name extends Component {
+    constructor() {
+        super();
+        this.state = {
+            personInfo: [],
+            loading: true,
+            error: false,
+        };
+    }
+
+    componentDidMount() {
+        const handleStates = async () => {
+            const personInfo = await getPersonDetails(
+                this.props.match.params.id,
+            );
+            this.setState({
+                loading: false,
+                personInfo,
+            });
+        };
+        handleStates();
+        console.log(this.props)
+    }
     render() {
         return (
             <>
@@ -13,6 +38,18 @@ class Name extends Component {
 }
 
 export default Name;
+
+// born date and deathday view
+// name
+// gender 1 = actress, gender 2 actor
+// profile image
+// biography
+// photos
+// known for, movies
+// Filmography
+// Awards
+// 
+
 
 // https://api.themoviedb.org/3/person/1892?api_key=4d4ed145d3584846f5922b6a467e1f85&language=en-US
 
