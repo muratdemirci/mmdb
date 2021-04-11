@@ -1,4 +1,4 @@
-import {LOCAL_API_URL} from '../../config/config';
+import {LOCAL_API_URL} from '../../config';
 import {authHeader} from '../_helpers';
 
 export const userService = {

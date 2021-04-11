@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {POSTERURL} from '../config/config';
+import {POSTERURL} from '../config';
 import {useHistory} from 'react-router-dom';
+import {string_to_slug} from '../support/slugify'
 import {
     getMoviesByGenre,
     getTrendingMovies,
@@ -37,8 +38,11 @@ function Row({title, isLargeRow, genre, movieId}) {
         fetchData();
     }, [genre, movieId]);
 
-    const handleClick = (movie) => {        
-        history.push(`/title/${movie.id}`);
+
+
+    const handleClick = (movie) => {                
+        const movieName = string_to_slug(movie.title ||  movie.original_name)
+        history.push(`/title/${movie.id}-${movieName}`);
         window.location.reload();
     };
 

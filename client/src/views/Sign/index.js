@@ -1,7 +1,7 @@
 import React, {useState, useEffect, Component} from 'react';
 import './style.css';
 import {getUpcoming} from '../../services/titleAPI';
-import {POSTERURL} from '../../config/config';
+import {POSTERURL} from '../../config';
 import {useDispatch, useSelector} from 'react-redux';
 import {userActions} from '../../redux/_actions';
 

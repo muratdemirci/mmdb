@@ -4,7 +4,7 @@ import {
     BASE_MOVIE_PATH,
     SEARCH_MOVIE_PATH,
     BASE_URL_PATH,
-} from '../config/config';
+} from '../config';
 
 export let genres = [];
 

@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
+import Metadata from '../../components/Metadata';
 import Navbar from '../../partials/Navbar';
-import {BASE_BACKDROP_PATH, BASE_POSTER_PATH} from '../../config/config';
+import {time_convert_h_min} from '../../support/time';
+import {BASE_BACKDROP_PATH, BASE_POSTER_PATH} from '../../config';
 import {
     getMovieCreditsById,
     getMovieDetailsById,
     getSimilarMovies,
 } from '../../services/titleAPI';
-import Cast from '../../components/Cast/Cast';
-import Trailer from '../../components/Trailer/Trailer';
+import Cast from '../../components/Cast';
+import Trailer from '../../components/Trailer';
 import Row from '../../partials/Row';
 import './style.css';
 
@@ -50,15 +52,10 @@ class Title extends Component {
             ? this.state.movieInfo.release_date.substring(0, 4)
             : '';
 
-        function time_convert(num) {
-            var hours = Math.floor(num / 60);
-            var minutes = num % 60;
-            return ' ' + hours + 'h ' + minutes + 'min';
-        }
-
         if (!this.state.loading) {
             return (
                 <>
+                    <Metadata title={`${this.state.movieInfo.title} (${releaseDate})`} />
                     <Navbar />
                     <div className="movie-details-wrapper">
                         <div className="movie-details-title">
@@ -86,7 +83,7 @@ class Title extends Component {
                                         ⭐
                                     </span>
                                     {this.state.movieInfo.vote_average}/10 |
-                                    {time_convert(this.state.movieInfo.runtime)}{' '}
+                                    {time_convert_h_min(this.state.movieInfo.runtime)}{' '}
                                     |{' '}
                                     {(this.state.movieInfo.genres || []).map(
                                         (genre, index) => (

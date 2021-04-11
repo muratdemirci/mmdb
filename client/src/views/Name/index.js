@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Navbar from '../../partials/Navbar';
+import Metadata from '../../components/Metadata';
 import {
     getPersonDetails,
     getPersonCombinedCredits,
@@ -47,6 +48,7 @@ class Name extends Component {
     render() {
         return (
             <>
+                <Metadata title={this.state.personInfo.name} />
                 <Navbar />
                 <h1>sa</h1>
             </>

@@ -2,7 +2,7 @@ import axios from '../config/axios';
 import {
 	API_KEY,
 	BASE_URL_PATH
-} from '../config/config';
+} from '../config';
 
 export const getPersonDetails = async (nameId) => {
 	try {
