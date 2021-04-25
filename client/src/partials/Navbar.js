@@ -21,14 +21,19 @@ function Navbar() {
             <div className={`navbar ${show && 'navbar__black'}`}>
                 <img
                     className="navbar__logo"
-                    src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg"
-                    alt="imdb logo"
+                    src={require("../assets/img/MMDB_Logo_2021.svg")}
+                    title="MMDB"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        window.location.href = '/';
+                    }}
+                    alt="mmdb logo"
                 />
 
                 <img
                     className="navbar__avatar"
-                    src="https://upload.wikimedia.org/wikipedia/commons/2/24/Missing_avatar.svg"
-                    alt="imdb logo"
+                    src={require("../assets/img/Missing_avatar.svg")}
+                    alt="missing avatar"
                 />
                 <h4 className="navbar__userInfo"> {user.email} </h4>
             </div>
@@ -38,8 +43,13 @@ function Navbar() {
             <div className={`navbar ${show && 'navbar__black'}`}>
                 <img
                     className="navbar__logo"
-                    src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg"
-                    alt="imdb logo"
+                    src={require("../assets/img/MMDB_Logo_2021.svg")}
+                    title="MMDB"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        window.location.href = '/';
+                    }}
+                    alt="mmdb logo"
                 />
 
                 <div className="navbar__signin">

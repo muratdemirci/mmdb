@@ -24,7 +24,8 @@
     margin-bottom: 10px;
     max-width: 100%;
     width: 100%;
-    border-radius: 50%;
+    height: 65%;
+    border-radius: 25%;
 }
 
 .cast_character {

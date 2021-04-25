@@ -1,10 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import {POSTERURL} from '../config';
-import {getUpcoming} from '../services/titleAPI';
-import {Link} from 'react-router-dom';
+import React, {useState, useEffect} from 'react'
+import {POSTERURL} from '../config'
+import {getUpcoming} from '../services/titleAPI'
+import {useHistory} from 'react-router-dom'
+import {string_to_slug} from '../support/slugify'
 
 function Banner() {
     const [movie, setMovie] = useState();
+    const history = useHistory();
     useEffect(() => {
         async function fetchData() {
             const request = await getUpcoming();
@@ -14,9 +16,15 @@ function Banner() {
         fetchData();
     }, []);
 
-    function truncate(str, n) {
+    const truncate = (str, n) => {
         return str?.length > n ? str.substr(0, n - 1) + '...' : str;
     }
+
+    const handleClick = (movie) => {                
+        const movieName = string_to_slug(movie.title ||  movie.original_name)
+        history.push(`/title/${movie.id}-${movieName}`);
+        window.location.reload();
+    };
 
     return (
         <header
@@ -31,7 +39,7 @@ function Banner() {
                     {movie?.title || movie?.name || movie?.original_name}{' '}
                 </h1>
                 <div className="banner_buttons">
-                    <button className="banner__button">Quick peek <span role="img" aria-label="eye">👁️</span></button>
+                    <button className="banner__button" onClick={() => handleClick(movie)}>Quick peek <span role="img" aria-label="eye">👁️</span></button>
                     <button className="banner__button">Add to my list <span role="img" aria-label="plus">➕</span></button>
                 </div>
                 <h1 className="banner__description">

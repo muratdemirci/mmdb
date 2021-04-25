@@ -41,3 +41,4 @@ export const SEARCH_MOVIE_PATH = "https://api.themoviedb.org/3/search/movie";
 export const BASE_URL_PATH = "https://api.themoviedb.org/3/";
 export const BASE_POSTER_PATH = "https://image.tmdb.org/t/p/";
 export const BASE_BACKDROP_PATH = "https://image.tmdb.org/t/p/original/";
+export const BEST_TV_POSTER_PATH = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";

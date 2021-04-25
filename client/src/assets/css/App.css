@@ -118,7 +118,7 @@
 }
 
 .banner__fadeBottom {
-    height: 7.4rem;
+    height: 16.4rem;
     background-image: linear-gradient(
         180deg,
         transparent,
@@ -131,7 +131,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    height: 30px;
+    height: 70px;
     z-index: 1;
     padding: 20px;
     display: flex;
@@ -143,13 +143,14 @@
 }
 
 .navbar__black {
-    background-color: #111;
+    background-color: #11111163;
 }
 
 .navbar__logo {
     position: fixed;
     left: 5;
     width: 80px;
+    height: 41px;
     object-fit: contain;
 }
 

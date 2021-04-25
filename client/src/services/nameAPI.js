@@ -4,6 +4,8 @@ import {
 	BASE_URL_PATH
 } from '../config';
 
+// get known for https://developers.themoviedb.org/3/search/search-people
+
 export const getPersonDetails = async (nameId) => {
 	try {
 		const response = await axios.get(
@@ -30,6 +32,21 @@ export const getPersonCombinedCredits = async (nameId) => {
 	} catch (err) {
 		console.error(
 				`Something went wrong fetching the person's movie credits: ${err}`,
+		);
+		throw err;
+	}
+}
+
+export const getPersonKnownFor = async (nameId,limit) => {
+	try {
+		const response = await axios.get(
+			`${BASE_URL_PATH}/person/${nameId}/combined_credits?api_key=${API_KEY}&language=en-US`,
+		);		
+		const knownFor = [...response.data.cast, ...response.data.crew].sort((a,b) => { return b.vote_count - a.vote_count})	
+		return knownFor.slice(0,limit || 3);	
+	} catch (err) {
+		console.error(
+				`Something went wrong fetching the person's known for: ${err}`,
 		);
 		throw err;
 	}

@@ -60,6 +60,7 @@ function Row({title, isLargeRow, genre, movieId}) {
                         src={`${POSTERURL}${
                             isLargeRow ? movie.poster_path : movie.backdrop_path
                         }`}
+                        title={movie.name}
                         alt={movie.name}
                     />
                 ))}

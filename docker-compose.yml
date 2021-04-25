@@ -1,0 +1,56 @@
+version: '3.6'
+
+services:
+  server:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    image: mmdb-server
+    container_name: express-rest-api
+    command: /usr/src/api/node_modules/.bin/nodemon server.js
+    volumes:
+      - ./api/:/usr/src/api
+      - /usr/src/api/node_modules
+    ports:
+      - "8088:8088"
+    depends_on:
+      - mongo
+    env_file: ./api/.env
+    environment:
+      - NODE_ENV=development
+    networks:
+      - mmdb-network
+  mongo:
+    image: mongo
+    volumes:
+      - data-volume:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - mmdb-network
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: mmdb-client
+    container_name: react-movie-client
+    command: npm start
+    volumes:
+      - ./client/:/usr/client
+      - /usr/client/node_modules
+    depends_on:
+      - server
+    ports:
+      - "3000:3000"
+    networks:
+      - mmdb-network
+
+networks:
+    mmdb-network:
+        driver: bridge
+
+volumes:
+    data-volume:
+    node_modules:
+    web-root:
+      driver: local
