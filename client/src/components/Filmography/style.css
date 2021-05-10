@@ -1,0 +1,44 @@
+.List {
+  border: 1px solid #d9dddd;
+}
+
+.tree-item-open,
+.tree-item-closed {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.tree-branch::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  margin-top: 1px;
+  margin-left: 23px;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 6px solid rgba(0, 0, 0, 0.7);
+  opacity: 0.7;
+  position: absolute;
+  top: 0;
+  left: -36px;
+  transform: rotate(90deg);
+  animation-duration: 0.3s;
+}
+
+.tree-item-closed::after {
+  transform: rotate(0deg);
+}
+
+.item-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.item-background:hover {
+  background-color: rgba(207, 208, 209, 1);
+  cursor: pointer;
+}

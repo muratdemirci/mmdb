@@ -1,7 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap');
-
 body {
-    font-family: 'Kanit', sans-serif;
     background-color: #111;
     height: 100vh;
 }
@@ -121,7 +118,6 @@ body {
     margin-bottom: 10px;
     padding: 15px;
     font-size: 1rem;
-    font-family: Nunito, sans-serif;
     color: #000;
     border-radius: 5px;
 }
@@ -160,7 +156,6 @@ body {
     border-radius: 5px;
     color: #fff;
     font-size: 1rem;
-    font-family: Nunito, sans-serif;
     background: #f5c518;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.13);
     -webkit-transition: all 0.2s ease;
