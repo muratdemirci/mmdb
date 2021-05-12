@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { BEST_TV_POSTER_PATH, BASE_POSTER_PATH } from '../../config'
 import Navbar from '../../partials/Navbar'
+import { getAge } from '../../support/time'
 import Metadata from '../../components/Metadata'
 import ReadMore from '../../components/Readmore'
 import MasonryGrid from '../../components/MasonryGrid'
 import Filmography from '../../components/Filmography'
+import SocialMediaButtons from '../../components/SocialMediaButtons'
+
 import {
   getPersonDetails,
   getPersonCombinedCredits,
@@ -14,6 +17,7 @@ import {
   getPersonFilmography
 } from '../../services/nameAPI'
 import '../../assets/css/SinglePage.css'
+import './style.css'
 class Name extends Component {
   constructor () {
     super()
@@ -58,15 +62,17 @@ class Name extends Component {
         personKnownFor,
         personFilmography
       })
-      console.log(personInfo)
+
+      // console.log(personTaggedImages)
     }
-    handleStates()
+    handleStates()    
   }
 
   render () {
     const addDefaultSrc = (e) => {
       e.target.src = require('../../assets/img/profile-placeholder.png')
     }
+
     return (
       <>
         <Metadata title={this.state.personInfo.name} />
@@ -74,7 +80,7 @@ class Name extends Component {
         <div className='m3-content m3-margin-top' style={{ maxWidth: '1400px' }}>
           <div className='m3-row-padding' style={{ marginTop: '80px' }}>
             <div className='m3-third'>
-              <div className='m3-card-4'>
+              <div className='m3-card-4' style={{ backgroundColor: 'rgb(3 150 136 / 17%)' }}>
                 <div className='m3-display-container'>
                   <img
                     onError={addDefaultSrc}
@@ -82,13 +88,12 @@ class Name extends Component {
                     style={{ width: '100%' }}
                     alt={this.state.personInfo.name}
                   />
-                  <div className='m3-display-bottomleft m3-container'>
-                    <h2 className='m3-text-indigo'>{this.state.personInfo.name}</h2>
+                  <div className='m3-container'>
+                    <h2 className='m3-text-indigo'>{this.state.personInfo.name} {`(${getAge(this.state.personInfo.birthday)})`}</h2>
                   </div>
                 </div>
                 <div className='m3-container'>
-                  <h5>Personal Info</h5>
-                  <p><i className='m3-margin-right m3-large m3-text-teal' />meh meh meh</p>
+                  <SocialMediaButtons data={this.state.personSocialMediaAccounts} />
                   <br />
                 </div>
               </div><br />
@@ -109,13 +114,3 @@ class Name extends Component {
 }
 
 export default Name
-
-// born date and deathday view
-// name
-// gender 1 = actress, gender 2 actor
-// profile image
-// biography
-// photos
-// known for, movies
-// Filmography
-// Awards

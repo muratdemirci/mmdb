@@ -71,8 +71,9 @@ class Title extends Component {
             />
             <div className='movie-details-poster-wrapper'>
               <img
-                src={`${BASE_POSTER_PATH}/w500${this.state.movieInfo.poster_path}`}
+                src={`${BASE_POSTER_PATH}w500${this.state.movieInfo.poster_path}`}
                 alt='movie poster'
+                style={{ height: '90%' }}
               />
               <div className='movie-details-info'>
                 <div>
@@ -88,11 +89,8 @@ class Title extends Component {
                   {(this.state.movieInfo.genres || []).map(
                     (genre, index) => (
                       <span key={genre.id}>
-                        <a
-                          href={`/genre/${genre.name.toLowerCase()}`}
-                        >
-                          {(index ? ', ' : '') +
-                                                        genre.name}
+                        <a href={`/genre/${genre.name.toLowerCase()}`}>
+                          {(index ? ', ' : '') + genre.name}
                         </a>
                       </span>
                     )
@@ -107,16 +105,18 @@ class Title extends Component {
                   name={this.state.movieInfo.title}
                   release={releaseDate}
                 />
+                <div className='related-movies'>
+                  <Row
+                    title='More Like This'
+                    genre='similar'
+                    movieId={this.props.match.params.id}
+                    isLargeRow
+                  />
+                </div>
+
               </div>
             </div>
-            <div className='related-movies'>
-              <Row
-                title='More Like This'
-                genre='similar'
-                movieId={this.props.match.params.id}
-                isLargeRow
-              />
-            </div>
+
           </div>
         </>
       )
