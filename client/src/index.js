@@ -7,6 +7,8 @@ import * as serviceWorker from './serviceWorker'
 import SignIn from './views/Sign'
 import Title from './views/Title'
 import Name from './views/Name'
+import Genres from './views/Genre'
+import Genre from './views/Genre/single'
 import Logout from './views/Logout'
 
 import { Provider } from 'react-redux'
@@ -29,6 +31,14 @@ ReactDOM.render(
         <Route
           path='/name/:id'
           render={(props) => <Name {...props} />}
+        />
+        <Route
+        path='/genres/browse/:id'
+          render={(props) => <Genre {...props} />}
+        />
+        <Route
+          path='/genres'
+          render={(props) => <Genres {...props} />}
         />
         <Route
           path='/logout'

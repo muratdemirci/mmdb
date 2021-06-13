@@ -5,7 +5,9 @@ import { string_to_slug } from '../support/slugify'
 import {
   getMoviesByGenre,
   getTrendingMovies,
+  getUpcomingMovies,
   getTopRatedMovies,
+  getNowPlayingMovies,
   getSimilarMovies
 } from '../services/titleAPI'
 import '../assets/css/App.css'
@@ -29,6 +31,14 @@ function Row ({ title, isLargeRow, genre, movieId }) {
           const similarMovies = await getSimilarMovies(movieId)
           setMovies(similarMovies)
           return similarMovies
+        case 'now-playing':
+          const nowPlayingMovies = await getNowPlayingMovies()
+          setMovies(nowPlayingMovies)
+          return nowPlayingMovies
+        case 'upcoming':
+          const upcomingMovies = await getUpcomingMovies()
+          setMovies(upcomingMovies)
+          return upcomingMovies
         default:
           const moviesByGenres = await getMoviesByGenre(genre)
           setMovies(moviesByGenres)

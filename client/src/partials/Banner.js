@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { POSTERURL } from '../config'
-import { getUpcoming } from '../services/titleAPI'
+import { getUpcomingMovies } from '../services/titleAPI'
 import { useHistory } from 'react-router-dom'
 import { string_to_slug } from '../support/slugify'
 
@@ -9,7 +9,7 @@ function Banner () {
   const history = useHistory()
   useEffect(() => {
     async function fetchData () {
-      const request = await getUpcoming()
+      const request = await getUpcomingMovies()
       setMovie(request[Math.floor(Math.random() * request.length - 1)])
       return request
     }

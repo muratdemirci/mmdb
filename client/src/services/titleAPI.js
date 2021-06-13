@@ -41,7 +41,7 @@ export const getMoviesByGenre = async (genreId) => {
   }
 }
 
-export const getNowPlaying = async () => {
+export const getNowPlayingMovies = async () => {
   try {
     const response = await axios.get(
             `${BASE_MOVIE_PATH}now_playing?api_key=${API_KEY}`
@@ -56,7 +56,7 @@ export const getNowPlaying = async () => {
   }
 }
 
-export const getUpcoming = async () => {
+export const getUpcomingMovies = async () => {
   try {
     const response = await axios.get(
             `${BASE_MOVIE_PATH}upcoming?api_key=${API_KEY}`

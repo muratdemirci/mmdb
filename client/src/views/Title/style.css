@@ -119,3 +119,8 @@ a:active {
     grid-template-columns: auto auto auto auto;
     grid-gap: 10px;
 }
+
+.movie-genre a {
+    text-decoration: none;
+    font-weight: bold;
+}

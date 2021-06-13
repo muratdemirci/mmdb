@@ -13,12 +13,14 @@ function App () {
       <Navbar />
       <Banner />
       <Row title='Trending Now' genre='trending' isLargeRow />
-      <Row title='Top Rated' genre='top-rated' />
-      <Row title='Action Movies' genre={28} />
-      <Row title='Comedy Movies' genre={35} />
-      <Row title='Romance Movies' genre={10749} />
-      <Row title='Horror Movies' genre={27} />
-      <Row title='Documentaries' genre={99} />
+      <Row title='Now Playing' genre='now-playing' isLargeRow />
+      <Row title='Upcoming Movies' genre='upcoming' isLargeRow />
+      <Row title='Top Rated Movies' genre='top-rated' isLargeRow />
+      <Row title='Action Movies' genre={28} isLargeRow />
+      <Row title='Comedy Movies' genre={35} isLargeRow />
+      <Row title='Romance Movies' genre={10749} isLargeRow />
+      <Row title='Horror Movies' genre={27} isLargeRow />
+      <Row title='Documentaries' genre={99} isLargeRow />
     </div>
   )
 }

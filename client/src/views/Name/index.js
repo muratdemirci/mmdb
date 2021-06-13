@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BEST_TV_POSTER_PATH, BASE_POSTER_PATH } from '../../config'
+import { BEST_TV_POSTER_PATH, BASE_BACKDROP_PATH } from '../../config'
 import Navbar from '../../partials/Navbar'
 import { getAge } from '../../support/time'
 import Metadata from '../../components/Metadata'
@@ -53,6 +53,9 @@ class Name extends Component {
       const personFilmography = await getPersonFilmography(
         this.props.match.params.id
       )
+
+      personKnownFor.forEach(obj => obj.image_path = `${BASE_BACKDROP_PATH}${obj?.poster_path}`)
+
       this.setState({
         loading: false,
         personInfo,
@@ -63,9 +66,11 @@ class Name extends Component {
         personFilmography
       })
 
-      // console.log(personTaggedImages)
+      // TODO: print tagged images as a background image with low opacity
+
+      // console.log(personKnownFor)
     }
-    handleStates()    
+    handleStates()
   }
 
   render () {
@@ -103,7 +108,7 @@ class Name extends Component {
               <div className='m3-container'>
                 <ReadMore textClass='m3-text-white'>{this.state.personInfo.biography}</ReadMore>
               </div>
-              <MasonryGrid data={{ title: 'Known For', imagePath: BASE_POSTER_PATH, chunk: this.state.personKnownFor }} />
+              <MasonryGrid data={{ title: 'Known For', chunk: this.state.personKnownFor, maxwidth: ['92px', '154px'], maxheight: ['192px', '254px'] }} />
               <Filmography data={{ title: this.state.personInfo.known_for_department, chunk: this.state.personFilmography }} />{' '}
             </div>
           </div>

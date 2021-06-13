@@ -6,23 +6,41 @@ import { string_to_slug } from '../../support/slugify'
 function MasonryGrid ({ data }) {
   const history = useHistory()
 
+  console.log(data)
+
   const handleClick = (item) => {
-    const itemName = string_to_slug(item.title || item.original_name)
-    history.push(`/title/${item.id}-${itemName}`)
-    window.location.reload()
+    if (Object.keys(item).length > 2) {
+      const itemName = string_to_slug(item.title || item.original_name)
+      history.push(`/title/${item.id}-${itemName}`)
+      window.location.reload()
+    } else {
+      history.push(`/genres/browse/${item.id}`)
+      window.location.reload()
+    }
   }
   const addDefaultSrc = (e) => {
     e.target.src = require('../../assets/img/poster-placeholder.png')
   }
+
+  const centeredStyle = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)'
+  }
+
+  // follow button u filan
+
   return (
     <>
       <h2 className='m3-text-amber'>{data.title}</h2>
       <div className='mg-container'>
         {data.chunk.map((item) => (
-          <div key={item.id} className='grid-item' style={{ maxWidth: ['92px', '154px'][Math.floor(Math.random() * 2)], maxHeight: ['192px', '254px'][Math.floor(Math.random() * 2)] }}>
+          <div key={item.id} className='grid-item' style={{ maxWidth: data.maxwidth[Math.floor(Math.random() * data.maxwidth.length)], maxHeight: data.maxheight[Math.floor(Math.random() * data.maxheight.length)] }}>
             <div className='fig'>
+              {data.caption ? <div className='centered' style={centeredStyle}><h2 className='m3-text-deep-purple'>{item?.name}</h2></div> : null}
               <img
-                src={`${data.imagePath}original${item?.poster_path}`}
+                src={`${item?.image_path}`}
                 onError={addDefaultSrc}
                 onClick={() => handleClick(item)}
                 title={item.media?.original_title}

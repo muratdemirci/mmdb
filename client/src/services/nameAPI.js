@@ -4,7 +4,7 @@ import {
   BASE_URL_PATH
 } from '../config'
 
-// get known for https://developers.themoviedb.org/3/search/search-people
+// TODO: add follow to the name endpoint
 
 export const getPersonDetails = async (nameId) => {
   try {
