@@ -13,6 +13,7 @@ const Cast = (props) => {
         <div className='cast_member' key={star.name}>
           <a href={`/name/${star.id}-${string_to_slug(star.name)}`}>
             <img
+              loading='lazy'
               onError={addDefaultSrc}
               src={`${MOBILEPOSTERURL}/w138_and_h175_bestv2/${star.profile_path}`}
               alt={star.name}

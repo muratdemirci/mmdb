@@ -6,8 +6,6 @@ import { string_to_slug } from '../../support/slugify'
 function MasonryGrid ({ data }) {
   const history = useHistory()
 
-  console.log(data)
-
   const handleClick = (item) => {
     if (Object.keys(item).length > 2) {
       const itemName = string_to_slug(item.title || item.original_name)
@@ -40,6 +38,7 @@ function MasonryGrid ({ data }) {
             <div className='fig'>
               {data.caption ? <div className='centered' style={centeredStyle}><h2 className='m3-text-deep-purple'>{item?.name}</h2></div> : null}
               <img
+                loading='lazy'
                 src={`${item?.image_path}`}
                 onError={addDefaultSrc}
                 onClick={() => handleClick(item)}

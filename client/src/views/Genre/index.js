@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import { BEST_TV_POSTER_PATH, BASE_POSTER_PATH } from '../../config'
 import { getAllGenres } from '../../services/genreAPI'
 import Navbar from '../../partials/Navbar'
 import MasonryGrid from '../../components/MasonryGrid'

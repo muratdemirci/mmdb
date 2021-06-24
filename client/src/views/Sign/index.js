@@ -140,22 +140,13 @@ function SignForm () {
     <>
       <img
         className='background'
+        loading='lazy'
         src={`${POSTERURL}${movie?.backdrop_path}`}
-                // TODO: movie.poster_path : movie.backdrop_path condition
         alt=''
       />
       <div className='container'>
         <header>
-          <div
-            className={
-                            'header-headings ' +
-                            (option === 1
-                              ? 'sign-in'
-                              : option === 2
-                                ? 'sign-up'
-                                : 'forgot')
-                        }
-          >
+          <div className={ 'header-headings ' + (option === 1 ? 'sign-in' : option === 2 ? 'sign-up' : 'forgot') } >
             <span>Sign in to your account</span>
             <span>Create an account</span>
             <span>Reset your password</span>

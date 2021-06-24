@@ -64,14 +64,11 @@ function Row ({ title, isLargeRow, genre, movieId }) {
       <div className='row__posters'>
         {movies.map((movie) => (
           <img
+            loading='lazy'
             key={movie.id}
             onClick={() => handleClick(movie)}
-            className={`row__poster ${
-                            isLargeRow && 'row_posterLarge'
-                        }`}
-            src={`${POSTERURL}${
-                            isLargeRow ? movie.poster_path : movie.backdrop_path
-                        }`}
+            className={`row__poster ${isLargeRow && 'row_posterLarge'}`}
+            src={`${POSTERURL}${ isLargeRow ? movie.poster_path : movie.backdrop_path }`}
             onError={addDefaultSrc}
             title={movie.name}
             alt={movie.name}

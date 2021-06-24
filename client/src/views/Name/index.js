@@ -88,6 +88,7 @@ class Name extends Component {
               <div className='m3-card-4' style={{ backgroundColor: 'rgb(3 150 136 / 17%)' }}>
                 <div className='m3-display-container'>
                   <img
+                    loading='lazy'
                     onError={addDefaultSrc}
                     src={`${BEST_TV_POSTER_PATH}${this.state.personInfo.profile_path}`}
                     style={{ width: '100%' }}

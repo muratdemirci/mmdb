@@ -43,14 +43,10 @@ export const getMoviesByGenre = async (genreId) => {
 
 export const getNowPlayingMovies = async () => {
   try {
-    const response = await axios.get(
-            `${BASE_MOVIE_PATH}now_playing?api_key=${API_KEY}`
-    )
-    // console.log(response.data);
+    const response = await axios.get( `${BASE_MOVIE_PATH}now_playing?api_key=${API_KEY}`)
     return response.data.results
   } catch (err) {
-    console.error(
-            `Something went wrong fetching the now playing data: ${err}`
+    console.error( `Something went wrong fetching the now playing data: ${err}`
     )
     throw err
   }
@@ -58,55 +54,37 @@ export const getNowPlayingMovies = async () => {
 
 export const getUpcomingMovies = async () => {
   try {
-    const response = await axios.get(
-            `${BASE_MOVIE_PATH}upcoming?api_key=${API_KEY}`
-    )
-    // console.log(response.data);
+    const response = await axios.get(`${BASE_MOVIE_PATH}upcoming?api_key=${API_KEY}`)
     return response.data.results
   } catch (err) {
-    console.error(
-            `Something went wrong fetching the upcoming movies: ${err}`
-    )
+    console.error(`Something went wrong fetching the upcoming movies: ${err}`)
     throw err
   }
 }
 
 export const getTrendingMovies = async () => {
   try {
-    const response = await axios.get(
-            `${BASE_URL_PATH}trending/all/week?api_key=${API_KEY}&language=en-US`
-    )
-    // console.log(response.data);
+    const response = await axios.get(`${BASE_URL_PATH}trending/all/week?api_key=${API_KEY}&language=en-US`)
     return response.data.results
   } catch (err) {
-    console.error(
-            `Something went wrong fetching the trending movies: ${err}`
-    )
+    console.error(`Something went wrong fetching the trending movies: ${err}`)
     throw err
   }
 }
 
 export const getTopRatedMovies = async () => {
   try {
-    const response = await axios.get(
-            `${BASE_MOVIE_PATH}top_rated?api_key=${API_KEY}&language=en-US`
-    )
-    // console.log(response.data);
+    const response = await axios.get(`${BASE_MOVIE_PATH}top_rated?api_key=${API_KEY}&language=en-US`)
     return response.data.results
   } catch (err) {
-    console.error(
-            `Something went wrong fetching the toprated movies: ${err}`
-    )
+    console.error( `Something went wrong fetching the toprated movies: ${err}`)
     throw err
   }
 }
 
 export const getMovieReviews = async (movieId) => {
   try {
-    const response = await axios.get(
-            `${BASE_MOVIE_PATH}${movieId}/reviews?api_key=${API_KEY}`
-    )
-    // console.log('reviews', response.data.results);
+    const response = await axios.get(`${BASE_MOVIE_PATH}${movieId}/reviews?api_key=${API_KEY}`)
     return response.data.results
   } catch (err) {
     console.error(`There was a problem finding titles: ${err}`)
@@ -116,10 +94,7 @@ export const getMovieReviews = async (movieId) => {
 
 export const searchMovies = async (searchInput) => {
   try {
-    const response = await axios.get(
-            `${SEARCH_MOVIE_PATH}?query=${searchInput}&api_key=${API_KEY}`
-    )
-    // console.log(response.data.results);
+    const response = await axios.get(`${SEARCH_MOVIE_PATH}?query=${searchInput}&api_key=${API_KEY}`)
     return response.data.results
   } catch (err) {
     console.error(`There was a problem finding titles: ${err}`)
@@ -129,40 +104,27 @@ export const searchMovies = async (searchInput) => {
 
 export const getMovieDetailsById = async (movieId) => {
   try {
-    const response = await axios.get(
-            `${BASE_MOVIE_PATH}${movieId}?api_key=${API_KEY}`
-    )
-    // console.log(response.data);
+    const response = await axios.get(`${BASE_MOVIE_PATH}${movieId}?api_key=${API_KEY}`)
     return response.data
   } catch (err) {
-    console.error(
-            `There was a problem finding the details of this title: ${err}`
-    )
+    console.error(`There was a problem finding the details of this title: ${err}`)
     throw err
   }
 }
 
 export const getMovieCreditsById = async (movieId) => {
   try {
-    const response = await axios.get(
-            `${BASE_MOVIE_PATH}${movieId}/credits?api_key=${API_KEY}`
-    )
-    // console.log(response.data);
+    const response = await axios.get(`${BASE_MOVIE_PATH}${movieId}/credits?api_key=${API_KEY}`)
     return response.data
   } catch (err) {
-    console.error(
-            `There was a problem finding the credits of this title: ${err}`
-    )
+    console.error(`There was a problem finding the credits of this title: ${err}`)
     throw err
   }
 }
 
 export const getSimilarMovies = async (movieId) => {
   try {
-    const response = await axios.get(
-            `${BASE_MOVIE_PATH}${movieId}/similar?api_key=${API_KEY}`
-    )
-    // console.log(response.data.results);
+    const response = await axios.get(`${BASE_MOVIE_PATH}${movieId}/similar?api_key=${API_KEY}`)
     return response.data.results
   } catch (err) {
     console.error(`There was a problem finding the similar movies: ${err}`)

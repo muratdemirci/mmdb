@@ -1,0 +1,55 @@
+.Searchbar {
+  max-width: 960px;
+  margin-top: 0px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.Searchbar h1 {
+  text-align: center;
+}
+.Searchbar {
+  position: relative;
+  width: 90%;
+}
+.Searchbar .searchBar {
+  width: 100%;
+  padding: 5px 10px;
+  font-size: 20px;
+}
+
+.Searchbar .searchBar:hover {
+  width: 100%;
+  padding: 5px 10px;
+  font-size: 20px;
+}
+
+.Searchbar .searchResults {
+  position: absolute;
+  width: 100%;
+  background: #111;
+  border-top: none;
+  box-sizing: border-box;
+  max-height: 200px;
+  overflow: auto;
+}
+.Searchbar .searchResults ul {
+  padding: 0px;
+  margin: 0px;
+}
+.Searchbar .searchResults ul li {
+  color: #fff;
+  list-style: none;
+  padding: 5px 20px;
+  cursor: pointer;
+  display: block;
+  line-height: 40px;
+  border-bottom: 1px solid #eaeaea;
+}
+.Searchbar .searchResults ul li:hover {
+  color:#111;
+  background: #fff;
+}
+
+.Searchbar .searchResults ul li img{
+width: 60px;
+}

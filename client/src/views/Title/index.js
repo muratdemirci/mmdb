@@ -65,12 +65,14 @@ class Title extends Component {
               </h1>
             </div>
             <img
+              loading='lazy'
               className='movie-details-backdrop'
               src={`${BASE_BACKDROP_PATH}${this.state.movieInfo.backdrop_path}`}
               alt='movie background'
             />
             <div className='movie-details-poster-wrapper'>
               <img
+                loading='lazy'
                 src={`${BASE_POSTER_PATH}w500${this.state.movieInfo.poster_path}`}
                 alt='movie poster'
                 style={{ height: '90%' }}

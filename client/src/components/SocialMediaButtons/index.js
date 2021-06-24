@@ -7,7 +7,7 @@ const SocialMediaButtons = ({ data }) => {
   Object.entries(SocialMediaAccounts).forEach(element => SocialDilemma.push({
     name: element[1][0].slice(0, -3),
     value: element[1][1],
-    url: (element[1][0].slice(0, -3) == 'imdb') ? `https://${element[1][0].slice(0, -3)}.com/name/${element[1][1]}` : `https://${element[1][0].slice(0, -3)}.com/${element[1][1]}`
+    url: (element[1][0].slice(0, -3) === 'imdb') ? `https://${element[1][0].slice(0, -3)}.com/name/${element[1][1]}` : `https://${element[1][0].slice(0, -3)}.com/${element[1][1]}`
   }))
   return (
     <>
@@ -17,7 +17,6 @@ const SocialMediaButtons = ({ data }) => {
           <a key={account.name} title={account.name} href={account.url} className={`fa fa-${account.name}`} target='_blank' />
         ))}
       </div>
-
     </>
   )
 }

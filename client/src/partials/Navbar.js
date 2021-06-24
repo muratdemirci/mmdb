@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Searchbar from '../components/Searchbar'
 
 function Navbar () {
   const [show, handleShow] = useState(false)
@@ -20,6 +21,7 @@ function Navbar () {
     return (
       <div className={`navbar ${show && 'navbar__black'}`}>
         <img
+          loading='lazy'
           className='navbar__logo'
           src={require('../assets/img/MMDB_Logo_2021.svg')}
           title='MMDB'
@@ -31,6 +33,7 @@ function Navbar () {
         />
 
         <img
+          loading='lazy'
           className='navbar__avatar'
           src={require('../assets/img/Missing_avatar.svg')}
           alt='missing avatar'
@@ -42,6 +45,7 @@ function Navbar () {
     return (
       <div className={`navbar ${show && 'navbar__black'}`}>
         <img
+          loading='lazy'
           className='navbar__logo'
           src={require('../assets/img/MMDB_Logo_2021.svg')}
           title='MMDB'
@@ -51,6 +55,8 @@ function Navbar () {
           }}
           alt='mmdb logo'
         />
+
+        <Searchbar />
 
         <div className='navbar__signin'>
           <button
