@@ -40,8 +40,8 @@ function Banner () {
           {movie?.title || movie?.name || movie?.original_name}{' '}
         </h1>
         <div className='banner_buttons'>
-          <button className='banner__button' onClick={() => handleClick(movie)}>Quick peek <span role='img' aria-label='eye'>👁️</span></button>
-          <button className='banner__button'>Add to my list <span role='img' aria-label='plus'>➕</span></button>
+          <button className='banner__button' onClick={() => handleClick(movie)}>Quick peek</button>
+          <button className='banner__button'>Add to my list</button>
         </div>
         <h1 className='banner__description'>
           {' '}
