@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './style.css'
 import { searchEverything } from '../../services/userAPI'
 import { BASE_BACKDROP_PATH, BASE_POSTER_PATH } from '../../config'
+import { string_to_slug } from '../../support/slugify'
 
 //make responsive searchbar input damn it
 class Searchbar extends Component {
@@ -23,7 +24,6 @@ class Searchbar extends Component {
 			this.setState({
 				search_results: result
 			})
-			console.log(result)
 		} else {
 			this.setState({
 				search_results: []
@@ -59,10 +59,9 @@ class Search extends Component {
 }
 
 function SearchResults(props) {
-	console.log(props)
   const addDefaultSrc = (e) => {
     e.target.src = require('../../assets/img/poster-placeholder.png')
-		//it's useless dude (-_-)
+		//it's useless dude (-_-) TODO: fix this garbage
   }
 	return (
 		<div className="searchResults">
@@ -74,7 +73,8 @@ function SearchResults(props) {
 								addResult={props.addResult}
 								media_type={result.media_type}  
 								key={key} 
-								title={result.title} 
+								title={result.title}
+								id={result.id} 
 								movieDate={result.release_date} 
 								movieImg={`${BASE_BACKDROP_PATH}${result?.poster_path}` || `${BASE_POSTER_PATH}${result?.backdrop_path}`} 
 								onError={addDefaultSrc}
@@ -87,7 +87,8 @@ function SearchResults(props) {
 								addResult={props.addResult}
 								media_type={result.media_type}  
 								key={key} 
-								title={result.name} 
+								title={result.name}
+								id={result.id}
 								movieDate={result.first_air_date} 
 								movieImg={`${BASE_BACKDROP_PATH}${result?.poster_path}` || `${BASE_POSTER_PATH}${result?.backdrop_path}`} 
 								onError={addDefaultSrc}
@@ -100,7 +101,8 @@ function SearchResults(props) {
 							addResult={props.addResult}
 							media_type={result.media_type} 
 							key={key} 
-							title={result.name} 
+							title={result.name}
+							id={result.id}
 							movieImg={`${BASE_BACKDROP_PATH}${result?.profile_path}`}					
 							onError={addDefaultSrc}
 							/>
@@ -118,8 +120,13 @@ class SearchResult extends Component {
 		this.props.addResult(i)
 	}
 
-	moveit = (i) => {
-		console.log(i)
+	moveit = (searchResult) => {
+		const contentName = string_to_slug(searchResult.title || searchResult.original_name)
+		if (searchResult.media_type === 'person') {
+			window.location.replace(`/name/${searchResult.id}-${contentName}`)
+		}else{
+			window.location.replace(`/title/${searchResult.id}-${contentName}`)
+		}
 	}
 	
   render() {

@@ -66,9 +66,6 @@ class Name extends Component {
         personFilmography
       })
 
-      // TODO: print tagged images as a background image with low opacity
-
-      // console.log(personKnownFor)
     }
     handleStates()
   }
