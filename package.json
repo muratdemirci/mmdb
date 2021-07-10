@@ -1,0 +1,26 @@
+{
+  "name": "mmdb",
+  "version": "1.0.0",
+  "description": "mern stack imdb clone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently --kill-others \"cd api && npm run dev\" \"cd client && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muratdemirci/mmdb.git"
+  },
+  "keywords": [
+    "mern"
+  ],
+  "author": "Murat Demirci",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muratdemirci/mmdb/issues"
+  },
+  "homepage": "https://github.com/muratdemirci/mmdb#readme",
+  "dependencies": {
+    "concurrently": "^6.2.0"
+  }
+}

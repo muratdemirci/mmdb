@@ -187,7 +187,6 @@ async function create (params) {
 
 async function update (id, params) {
   const user = await getUser(id)
-
   // validate
   if (
     user.email !== params.email &&
@@ -195,12 +194,10 @@ async function update (id, params) {
   ) {
     throw 'Email "' + params.email + '" is already taken'
   }
-
   // hash password if it was entered
   if (params.password) {
     params.passwordHash = hash(params.password)
   }
-
   // copy params to user and save
   Object.assign(user, params)
   user.updated = Date.now()
@@ -215,7 +212,6 @@ async function _delete (id) {
 }
 
 // helper functions
-
 async function getUser (id) {
   if (!db.isValidId(id)) throw 'User not found'
   const user = await db.User.findById(id)
@@ -288,7 +284,7 @@ async function sendVerificationEmail (user, origin) {
 
   await sendEmail({
     to: user.email,
-    subject: 'Sign-up Verification API - Verify Email',
+    subject: 'Murat Movie Database - Verify Email',
     html: `<h4>Verify Email</h4>
                <p>Thanks for registering!</p>
                ${message}`
@@ -298,14 +294,14 @@ async function sendVerificationEmail (user, origin) {
 async function sendAlreadyRegisteredEmail (email, origin) {
   let message
   if (origin) {
-    message = `<p>If you don't know your password please visit the <a href="${origin}/users/forgot-password">forgot password</a> page.</p>`
+    message = `<p>If you don't know your password please visit the <a href="${origin}/signin">sign in</a> page then click the forgot button.</p>`
   } else {
-    message = '<p>If you don\'t know your password you can reset it via the <code>/users/forgot-password</code> api route.</p>'
+    message = '<p>If you don\'t know your password you can reset it via the <code>/forgot-password</code> api route.</p>'
   }
 
   await sendEmail({
     to: email,
-    subject: 'Sign-up Verification API - Email Already Registered',
+    subject: 'Murat Movie Database - Email Already Registered',
     html: `<h4>Email Already Registered</h4>
                <p>Your email <strong>${email}</strong> is already registered.</p>
                ${message}`
@@ -325,7 +321,7 @@ async function sendPasswordResetEmail (user, origin) {
 
   await sendEmail({
     to: user.email,
-    subject: 'Sign-up Verification API - Reset Password',
+    subject: 'Murat Movie Database - Reset Password',
     html: `<h4>Reset Password Email</h4>
                ${message}`
   })

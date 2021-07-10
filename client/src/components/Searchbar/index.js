@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import './style.css'
 import { searchEverything } from '../../services/userAPI'
 import { BASE_BACKDROP_PATH, BASE_POSTER_PATH } from '../../config'
 import { string_to_slug } from '../../support/slugify'
+
 
 //make responsive searchbar input damn it
 class Searchbar extends Component {
@@ -10,10 +11,11 @@ class Searchbar extends Component {
     super()
     this.state = {
 			squery: '',
-      search_results: []
-    }
+      search_results: [],
+			showSearchResults: false
+    }	
   }
-	
+
 	handleSearch = async (squery) => {
 		this.setState({
 			squery: squery
@@ -22,12 +24,15 @@ class Searchbar extends Component {
 		if (squery.length > 3) {
 			const result = await searchEverything(squery)
 			this.setState({
-				search_results: result
+				search_results: result,
+				showSearchResults: true
 			})
+			console.log(this.state.showSearchResults)
 		} else {
 			this.setState({
-				search_results: []
-			});
+				search_results: [],
+				showSearchResults: false
+			})
 		}
 	}
 
@@ -42,7 +47,7 @@ class Searchbar extends Component {
 		return (
 			<div className="Searchbar">
 			<Search handleSearch={this.handleSearch} squery={this.state.squery}/>
-			<SearchResults addResult={this.addResult} searchResults={this.state.search_results}/>
+			{ this.state.showSearchResults && <SearchResults addResult={this.addResult} searchResults={this.state.search_results}/> }			
 		 </div>
     )
   }
@@ -130,6 +135,7 @@ class SearchResult extends Component {
 	}
 	
   render() {
+
 		if (this.props.media_type === 'movie' || this.props.media_type === 'tv') {
 			return (
 				<li onClick={this.moveit.bind(null,this.props)}>

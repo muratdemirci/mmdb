@@ -100,7 +100,7 @@ function register (req, res, next) {
     .then(() =>
       res.json({
         message:
-                    'Registration successful, please check your email for verification instructions'
+          'Registration successful, please check your email for verification instructions'
       })
     )
     .catch(next)
@@ -135,7 +135,7 @@ function forgotPassword (req, res, next) {
     .then(() =>
       res.json({
         message:
-                    'Please check your email for password reset instructions'
+          'Please check your email for password reset instructions'
       })
     )
     .catch(next)
