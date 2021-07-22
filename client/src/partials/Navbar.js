@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import Searchbar from '../components/Searchbar'
+import Cookies from 'universal-cookie'
+
+const cookies = new Cookies()
 
 function Navbar () {
   const [show, handleShow] = useState(false)
-  const user = JSON.parse(localStorage.getItem('user'))
+  
+  const user = cookies.get('email')
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -17,7 +21,7 @@ function Navbar () {
     }
   }, [])
 
-  if (localStorage.getItem('user')) {
+  if (cookies.get('loggedIn') && user) {
     return (
       <div className={`navbar ${show && 'navbar__black'}`}>
         <img
@@ -31,14 +35,16 @@ function Navbar () {
           }}
           alt='mmdb logo'
         />
-
-        <img
-          loading='lazy'
-          className='navbar__avatar'
-          src={require('../assets/img/Missing_avatar.svg')}
-          alt='missing avatar'
-        />
-        <h4 className='navbar__userInfo'> {user.email} </h4>
+        <Searchbar />
+        <div className="navbar__info">
+          <img
+              loading='lazy'
+              className='navbar__avatar'
+              src={require('../assets/img/Missing_avatar.svg')}
+              alt='missing avatar'
+          />
+          <h4 className='navbar__userInfo'> {user} </h4>
+        </div>
       </div>
     )
   } else {

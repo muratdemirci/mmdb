@@ -1,9 +1,13 @@
+import Cookies from 'universal-cookie'
+
+const cookies = new Cookies()
+
 export function authHeader () {
   // return authorization header with jwt token
-  const user = JSON.parse(localStorage.getItem('user'))
+  const token = cookies.get('token')
 
-  if (user && user.token) {
-    return { Authorization: 'Bearer ' + user.token }
+  if (token) {
+    return { Authorization: 'Bearer ' + token }
   } else {
     return {}
   }

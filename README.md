@@ -9,4 +9,4 @@ TODO:
 - [ ] We must be able to follow genres
 - [ ] The system should suggest us movies based on our follows.
 
-this readme is look like a sh*t, should fix it (-_-)
+this readme is looks like a sh*t, should fix it (-_-)

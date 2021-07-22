@@ -1,5 +1,6 @@
 import { LOCAL_API_URL } from '../../config'
 import { authHeader } from '../_helpers'
+import Cookies from 'universal-cookie'
 
 export const userService = {
   login,
@@ -13,7 +14,10 @@ export const userService = {
   delete: _delete
 }
 
+const cookies = new Cookies()
+
 function login (email, password) {
+
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -22,18 +26,18 @@ function login (email, password) {
 
   return fetch(`${LOCAL_API_URL}/users/authenticate`, requestOptions)
     .then(handleResponse)
-    .then((user) => {
-      // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem('user', JSON.stringify(user))
+    .then((user) => {      
+      cookies.set('token', user.jwtToken, { path: '/', maxAge: 86400, sameSite: true })
+      cookies.set('email', user.email, { path: '/', maxAge: 86400, sameSite: true })
+      cookies.set('loggedIn', true, { path: '/', maxAge: 86400, sameSite: true })      
       return user
     })
 }
 
-function logout () {
-  // remove user from local storage to log user out
-  localStorage.removeItem('user')
-  localStorage.removeItem('loggedin')
-  // TODO: add access token reject endpoint here
+function logout () {  
+  cookies.remove('loggedIn')
+  cookies.remove('email')
+  cookies.remove('token')  
 }
 
 function getAll () {

@@ -1,6 +1,8 @@
 import { userConstants } from '../_constants'
+import Cookies from 'universal-cookie'
 
-const user = JSON.parse(localStorage.getItem('user'))
+const cookies = new Cookies()
+const user = cookies.get('email')
 const initialState = user ? { loggedIn: true, user } : {}
 
 export function authentication (state = initialState, action) {
