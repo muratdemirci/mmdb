@@ -9,8 +9,11 @@ const ReadMore = ({ children, textClass }) => {
   return (
     <p className={`${textClass}`} style={{ whiteSpace: 'break-spaces' }}>
       {isReadMore ? (text + '').slice(0, 430) : text}
-      <span onClick={toggleReadMore} className='read-or-hide'>
-        <h3 className='m3-text-teal'>{isReadMore ? 'read more' : 'show less'}</h3>
+      <span onClick={toggleReadMore} className="read-or-hide">
+        <br/>
+        <span className="m3-text-teal">
+          {isReadMore ? 'read more' : 'show less'}
+        </span>
       </span>
     </p>
   )

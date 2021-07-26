@@ -20,32 +20,17 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter history={history}>
       <Switch>
+        <Route path="/signin" render={(props) => <SignIn {...props} />} />
+        <Route path="/title/:id" render={(props) => <Title {...props} />} />
+        <Route path="/name/:id" render={(props) => <Name {...props} />} />
         <Route
-          path='/signin'
-          render={(props) => <SignIn {...props} />}
-        />
-        <Route
-          path='/title/:id'
-          render={(props) => <Title {...props} />}
-        />
-        <Route
-          path='/name/:id'
-          render={(props) => <Name {...props} />}
-        />
-        <Route
-        path='/genres/browse/:id'
+          path="/genres/browse/:id"
           render={(props) => <Genre {...props} />}
         />
-        <Route
-          path='/genres'
-          render={(props) => <Genres {...props} />}
-        />
-        <Route
-          path='/logout'
-          render={(props => <Logout {...props} />)}
-        />
-        <Route path='/' render={(props) => <App {...props} />} />
-        <Redirect to='/' />
+        <Route path="/genres" render={(props) => <Genres {...props} />} />
+        <Route path="/logout" render={(props) => <Logout {...props} />} />
+        <Route path="/" render={(props) => <App {...props} />} />
+        <Redirect to="/" />
       </Switch>
     </BrowserRouter>
   </Provider>,

@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import { POSTERURL } from '../config'
 import { useHistory } from 'react-router-dom'
-import { string_to_slug } from '../support/slugify'
+import { stringToSlug } from '../support/slugify'
 import {
   getMoviesByGenre,
   getTrendingMovies,
   getUpcomingMovies,
   getTopRatedMovies,
   getNowPlayingMovies,
-  getSimilarMovies
+  getSimilarMovies,
 } from '../services/titleAPI'
 import '../assets/css/App.css'
 
-function Row ({ title, isLargeRow, genre, movieId }) {
+function Row({ title, isLargeRow, genre, movieId }) {
   const [movies, setMovies] = useState([])
   const history = useHistory()
 
   useEffect(() => {
-    async function fetchData () {
+    async function fetchData() {
       switch (genre) {
         case 'trending':
           const trendingMovies = await getTrendingMovies()
@@ -49,7 +49,7 @@ function Row ({ title, isLargeRow, genre, movieId }) {
   }, [genre, movieId])
 
   const handleClick = (movie) => {
-    const movieName = string_to_slug(movie.title || movie.original_name)
+    const movieName = stringToSlug(movie.title || movie.original_name)
     history.push(`/title/${movie.id}-${movieName}`)
     window.location.reload()
   }
@@ -59,16 +59,18 @@ function Row ({ title, isLargeRow, genre, movieId }) {
   }
 
   return (
-    <div className='row'>
+    <div className="row">
       <h2>{title}</h2>
-      <div className='row__posters'>
+      <div className="row__posters">
         {movies.map((movie) => (
           <img
-            loading='lazy'
+            loading="lazy"
             key={movie.id}
             onClick={() => handleClick(movie)}
             className={`row__poster ${isLargeRow && 'row_posterLarge'}`}
-            src={`${POSTERURL}${ isLargeRow ? movie.poster_path : movie.backdrop_path }`}
+            src={`${POSTERURL}${
+              isLargeRow ? movie.poster_path : movie.backdrop_path
+            }`}
             onError={addDefaultSrc}
             title={movie.name}
             alt={movie.name}

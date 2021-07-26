@@ -1,4 +1,4 @@
-const string_to_slug = (str) => {
+const stringToSlug = (str) => {
   str = str.replace(/^\s+|\s+$/g, '') // trim
   str = str.toLowerCase()
 
@@ -9,7 +9,8 @@ const string_to_slug = (str) => {
     str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i))
   }
 
-  str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+  str = str
+    .replace(/[^a-z0-9 -]/g, '') // remove invalid chars
     .replace(/\s+/g, '-') // collapse whitespace and replace by -
     .replace(/-+/g, '-') // collapse dashes
 
@@ -17,5 +18,5 @@ const string_to_slug = (str) => {
 }
 
 module.exports = {
-  string_to_slug
+  stringToSlug,
 }

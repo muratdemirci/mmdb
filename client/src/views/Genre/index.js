@@ -5,32 +5,40 @@ import MasonryGrid from '../../components/MasonryGrid'
 import Metadata from '../../components/Metadata'
 
 class Genres extends Component {
-  constructor () {
+  constructor() {
     super()
     this.state = {
-      genres: []
+      genres: [],
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const handleStates = async () => {
       const allGenres = await getAllGenres()
       this.setState({
         loading: false,
-        genres: allGenres
+        genres: allGenres,
       })
     }
     handleStates()
   }
 
-  render () {
+  render() {
     return (
       <>
         <div style={{ marginTop: '50px' }}>
-          <Metadata title='Popular Genres' />
+          <Metadata title="Popular Genres" />
           <Navbar />
           <div>
-            <MasonryGrid data={{ title: '', chunk: this.state.genres, maxwidth: ['200px'], maxheight: ['200px'], caption: true }} />
+            <MasonryGrid
+              data={{
+                title: '',
+                chunk: this.state.genres,
+                maxwidth: ['200px'],
+                maxheight: ['200px'],
+                caption: true,
+              }}
+            />
           </div>
         </div>
       </>

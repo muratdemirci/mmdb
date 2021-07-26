@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Searchbar from '../components/Searchbar'
 import Cookies from 'universal-cookie'
+import Agent from '../components/Agent'
 
 const cookies = new Cookies()
 
-function Navbar () {
+
+function Navbar() {
   const [show, handleShow] = useState(false)
-  
+
   const user = cookies.get('email')
 
   useEffect(() => {
@@ -25,25 +27,26 @@ function Navbar () {
     return (
       <div className={`navbar ${show && 'navbar__black'}`}>
         <img
-          loading='lazy'
-          className='navbar__logo'
+          loading="lazy"
+          className="navbar__logo"
           src={require('../assets/img/MMDB_Logo_2021.svg')}
-          title='MMDB'
+          title="MMDB"
           onClick={(e) => {
             e.preventDefault()
             window.location.href = '/'
           }}
-          alt='mmdb logo'
+          alt="mmdb logo"
         />
+        <Agent />
         <Searchbar />
         <div className="navbar__info">
           <img
-              loading='lazy'
-              className='navbar__avatar'
-              src={require('../assets/img/Missing_avatar.svg')}
-              alt='missing avatar'
+            loading="lazy"
+            className="navbar__avatar"
+            src={require('../assets/img/Missing_avatar.svg')}
+            alt="missing avatar"
           />
-          <h4 className='navbar__userInfo'> {user} </h4>
+          <h4 className="navbar__userInfo"> {user} </h4>
         </div>
       </div>
     )
@@ -51,22 +54,21 @@ function Navbar () {
     return (
       <div className={`navbar ${show && 'navbar__black'}`}>
         <img
-          loading='lazy'
-          className='navbar__logo'
+          loading="lazy"
+          className="navbar__logo"
           src={require('../assets/img/MMDB_Logo_2021.svg')}
-          title='MMDB'
+          title="MMDB"
           onClick={(e) => {
             e.preventDefault()
             window.location.href = '/'
           }}
-          alt='mmdb logo'
+          alt="mmdb logo"
         />
-
+        <Agent />
         <Searchbar />
-
-        <div className='navbar__signin'>
+        <div className="navbar__signin">
           <button
-            className='signin__button'
+            className="signin__button"
             onClick={(e) => {
               e.preventDefault()
               window.location.href = '/signin'

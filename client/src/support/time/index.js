@@ -18,5 +18,5 @@ const getAge = (dateString) => {
 
 module.exports = {
   time_convert_h_min,
-  getAge
+  getAge,
 }

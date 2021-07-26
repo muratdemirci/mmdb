@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently --kill-others \"cd api && npm run dev\" \"cd client && npm start\""
+    "dev": "concurrently --kill-others \"cd api && npm run dev\" \"cd client && npm start\"",
+    "format": "prettier --write \"client/src/**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,8 @@
   "homepage": "https://github.com/muratdemirci/mmdb#readme",
   "dependencies": {
     "concurrently": "^6.2.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.2"
   }
 }
