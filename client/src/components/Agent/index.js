@@ -9,12 +9,12 @@ class Agent extends Component {
 
   async componentDidMount() {
     const visitor = await getVisitorData()
-    await console.log(visitor)
+    await console.log(visitor.visitorId)
     await console.log(window.location.href)
   }
 
   render() {
-    return <div></div>
+    return '';
   }
 }
 

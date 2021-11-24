@@ -27,6 +27,8 @@ router.delete('/:id', authorize(), _delete)
 
 module.exports = router
 
+//TODO: create new files for schemas and middleware
+// and for routes LOL
 function authenticateSchema (req, res, next) {
   const schema = Joi.object({
     email: Joi.string().required(),

@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/muratdemirci/mmdb#readme",
   "dependencies": {
-    "concurrently": "^6.2.0"
+    "concurrently": "^6.2.1"
   },
   "devDependencies": {
     "prettier": "^2.3.2"
