@@ -9,8 +9,6 @@ router.post('/crawl', crawlSchema, crawlInterests)
 router.get('/feed', feedSchema, interestFeed)
 
 module.exports = router
-//TODO: create new files for schemas
-// and for routes LOL
 
 function crawlSchema (req, res, next) {
   const schema = Joi.object({
