@@ -23,15 +23,18 @@ module.exports = {
   delete: _delete
 }
 
-async function authenticate ({ email, password, ipAddress }) {
+async function authenticate({ email, password, ipAddress }) {
   const user = await db.User.findOne({ email })
 
   if (
     !user ||
-        !user.isVerified ||
-        !bcrypt.compareSync(password, user.passwordHash)
+    !bcrypt.compareSync(password, user.passwordHash)
   ) {
     throw 'Email or password is incorrect'
+  }
+
+  if (!user.isVerified ) {
+    throw 'User is not verified'
   }
 
   // authentication successful so generate jwt and refresh tokens
@@ -49,7 +52,7 @@ async function authenticate ({ email, password, ipAddress }) {
   }
 }
 
-async function refreshToken ({ token, ipAddress }) {
+async function refreshToken({ token, ipAddress }) {
   const refreshToken = await getRefreshToken(token)
   const { user } = refreshToken
 
@@ -72,7 +75,7 @@ async function refreshToken ({ token, ipAddress }) {
   }
 }
 
-async function revokeToken ({ token, ipAddress }) {
+async function revokeToken({ token, ipAddress }) {
   const refreshToken = await getRefreshToken(token)
 
   // revoke token and save
@@ -81,7 +84,7 @@ async function revokeToken ({ token, ipAddress }) {
   await refreshToken.save()
 }
 
-async function register (params, origin) {
+async function register(params, origin) {
   // validate
   if (await db.User.findOne({ email: params.email })) {
     // send already registered error in email to prevent user enumeration
@@ -106,7 +109,7 @@ async function register (params, origin) {
   await sendVerificationEmail(user, origin)
 }
 
-async function verifyEmail ({ token }) {
+async function verifyEmail({ token }) {
   const user = await db.User.findOne({ verificationToken: token })
 
   if (!user) throw 'Verification failed'
@@ -116,7 +119,7 @@ async function verifyEmail ({ token }) {
   await user.save()
 }
 
-async function forgotPassword ({ email }, origin) {
+async function forgotPassword({ email }, origin) {
   const user = await db.User.findOne({ email })
 
   // always return ok response to prevent email enumeration
@@ -133,7 +136,7 @@ async function forgotPassword ({ email }, origin) {
   await sendPasswordResetEmail(user, origin)
 }
 
-async function validateResetToken ({ token }) {
+async function validateResetToken({ token }) {
   const user = await db.User.findOne({
     'resetToken.token': token,
     'resetToken.expires': { $gt: Date.now() }
@@ -142,7 +145,7 @@ async function validateResetToken ({ token }) {
   if (!user) throw 'Invalid token'
 }
 
-async function resetPassword ({ token, password }) {
+async function resetPassword({ token, password }) {
   const user = await db.User.findOne({
     'resetToken.token': token,
     'resetToken.expires': { $gt: Date.now() }
@@ -157,17 +160,17 @@ async function resetPassword ({ token, password }) {
   await user.save()
 }
 
-async function getAll () {
+async function getAll() {
   const users = await db.User.find()
   return users.map((x) => basicDetails(x))
 }
 
-async function getById (id) {
+async function getById(id) {
   const user = await getUser(id)
   return basicDetails(user)
 }
 
-async function create (params) {
+async function create(params) {
   // validate
   if (await db.User.findOne({ email: params.email })) {
     throw 'Email "' + params.email + '" is already registered'
@@ -185,12 +188,12 @@ async function create (params) {
   return basicDetails(user)
 }
 
-async function update (id, params) {
+async function update(id, params) {
   const user = await getUser(id)
   // validate
   if (
     user.email !== params.email &&
-        (await db.User.findOne({ email: params.email }))
+    (await db.User.findOne({ email: params.email }))
   ) {
     throw 'Email "' + params.email + '" is already taken'
   }
@@ -206,20 +209,20 @@ async function update (id, params) {
   return basicDetails(user)
 }
 
-async function _delete (id) {
+async function _delete(id) {
   const user = await getUser(id)
   await user.remove()
 }
 
 // helper functions
-async function getUser (id) {
+async function getUser(id) {
   if (!db.isValidId(id)) throw 'User not found'
   const user = await db.User.findById(id)
   if (!user) throw 'User not found'
   return user
 }
 
-async function getRefreshToken (token) {
+async function getRefreshToken(token) {
   const refreshToken = await db.RefreshToken.findOne({ token }).populate(
     'user'
   )
@@ -227,18 +230,18 @@ async function getRefreshToken (token) {
   return refreshToken
 }
 
-function hash (password) {
+function hash(password) {
   return bcrypt.hashSync(password, 10)
 }
 
-function generateJwtToken (user) {
+function generateJwtToken(user) {
   // create a jwt token containing the user id that expires in 15 minutes
   return jwt.sign({ sub: user.id, id: user.id }, process.env.CONFIG_SECRET, {
     expiresIn: '15m'
   })
 }
 
-function generateRefreshToken (user, ipAddress) {
+function generateRefreshToken(user, ipAddress) {
   // create a refresh token that expires in 7 days
   return new db.RefreshToken({
     user: user.id,
@@ -248,11 +251,11 @@ function generateRefreshToken (user, ipAddress) {
   })
 }
 
-function randomTokenString () {
+function randomTokenString() {
   return crypto.randomBytes(40).toString('hex')
 }
 
-function basicDetails (user) {
+function basicDetails(user) {
   const {
     id,
     email,
@@ -271,7 +274,7 @@ function basicDetails (user) {
   }
 }
 
-async function sendVerificationEmail (user, origin) {
+async function sendVerificationEmail(user, origin) {
   let message
   if (origin) {
     const verifyUrl = `${origin}/users/verify-email?token=${user.verificationToken}`
@@ -291,7 +294,7 @@ async function sendVerificationEmail (user, origin) {
   })
 }
 
-async function sendAlreadyRegisteredEmail (email, origin) {
+async function sendAlreadyRegisteredEmail(email, origin) {
   let message
   if (origin) {
     message = `<p>If you don't know your password please visit the <a href="${origin}/signin">sign in</a> page then click the forgot button.</p>`
@@ -308,7 +311,7 @@ async function sendAlreadyRegisteredEmail (email, origin) {
   })
 }
 
-async function sendPasswordResetEmail (user, origin) {
+async function sendPasswordResetEmail(user, origin) {
   let message
   if (origin) {
     const resetUrl = `${origin}/users/reset-password?token=${user.resetToken.token}`
