@@ -22,6 +22,7 @@ app.use(
 )
 
 // api routes
+app.use('/interests', require('./interests/interests.controller'))
 app.use('/users', require('./users/users.controller'))
 
 // swagger docs route
