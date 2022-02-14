@@ -25,13 +25,13 @@ class Agent extends Component {
 
     try {
       const urlType = await findUrlType()
-      const urlTypeName = urlType.name
+
       const response = await axios.post(
         `${LOCAL_API_URL}/interests/crawl`, {
         fingerPrint: visitor.visitorId,
         urlPaths: [
           {
-            type: urlTypeName,
+            type: urlType,
             path: window.location.href
           }
         ]
