@@ -8,10 +8,12 @@ const schema = new Schema({
             type: {
                 type: String,
                 required : true,
+                lowercase: true,
             },
             path: {
                 type: String,
                 required : true,
+                lowercase: true,
             }
         }
     ]

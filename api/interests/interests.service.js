@@ -9,8 +9,9 @@ async function crawlInterests(params) {
     const result = await db.Interest.findOne({ fingerPrint: newInterest.fingerPrint });
 
     if (result) {
+        const urlPathStr = (newInterest.urlPaths[0].path).toString()
         // search in path objects
-        db.Interest.findOne({ 'urlPaths': { $elemMatch: { path: newInterest.urlPaths[0].path } } }, function (err, path) {
+        db.Interest.findOne({ 'urlPaths': { $elemMatch: { path: urlPathStr } } }, function (err, path) {
 
             if (err) {
                 console.log(err);
