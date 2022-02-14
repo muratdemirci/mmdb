@@ -24,7 +24,7 @@ ReactDOM.render(
         <Route path="/title/:id" render={(props) => <Title {...props} />} />
         <Route path="/name/:id" render={(props) => <Name {...props} />} />
         <Route
-          path="/genres/browse/:id"
+          path="/genres/:id"
           render={(props) => <Genre {...props} />}
         />
         <Route path="/genres" render={(props) => <Genres {...props} />} />

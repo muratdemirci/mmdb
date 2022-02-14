@@ -12,7 +12,7 @@ function MasonryGrid({ data }) {
       history.push(`/title/${item.id}-${itemName}`)
       window.location.reload()
     } else {
-      history.push(`/genres/browse/${item.id}`)
+      history.push(`/genres/${item.id}`)
       window.location.reload()
     }
   }

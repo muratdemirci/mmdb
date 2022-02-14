@@ -82,7 +82,7 @@ class Title extends Component {
                   {time_convert_h_min(this.state.movieInfo.runtime)} |{' '}
                   {(this.state.movieInfo.genres || []).map((genre, index) => (
                     <span key={genre.id} className="movie-genre">
-                      <a href={`/genres/browse/${genre.id}`} title={genre.name}>
+                      <a href={`/genres/${genre.id}`} title={genre.name}>
                         {(index ? ',' : '') + genre.name}
                       </a>
                     </span>

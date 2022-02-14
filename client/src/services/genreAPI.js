@@ -1,8 +1,6 @@
 import axios from '../config/axios'
 import { API_KEY, BASE_URL_PATH } from '../config'
 
-// TODO: add follow to the genre endpoint
-
 export const getAllGenres = async () => {
   try {
     const response = await axios.get(
@@ -27,4 +25,19 @@ export const getMoviesByGenre = async (genreId) => {
     )
     throw err
   }
+}
+
+
+export const findGenreById = async (genreId) => {
+  try {
+    const allGenres = await getAllGenres()
+    const currentGenre = allGenres.find(genre => genre.id === parseInt(genreId))
+    return currentGenre
+  } catch (err) {
+    console.error(
+      `Something went wrong fetching the getting movies by genres: ${err}`
+    )
+    throw err
+  }
+
 }
