@@ -6,7 +6,23 @@ const interestService = require('./interests.service')
 
 //routes
 router.post('/crawl', crawlSchema, interestService.crawlInterests)
-router.get('/feed', feedSchema, interestService.interestFeed)
+router.get('/seed', seedSchema, getRecommendations)
+router.get('/feed', feedSchema, getRecommendations)
+
+function getRecommendations(req, res, next) {
+  interestService
+  .interestFeed(req)
+  .then((recommendations) => res.json(recommendations))
+  .catch(next)
+}
+
+// function getRecommendations(req, res, next) {
+//   interestService
+//   .interestFeed(req)
+//   .then((recommendations) => res.json(recommendations))
+//   .catch(next)
+// }
+
 
 module.exports = router
 
@@ -19,6 +35,13 @@ function crawlSchema (req, res, next) {
 }
 
 function feedSchema(req, res, next) {
+  const schema = Joi.object({
+    fingerPrint: Joi.string().length(32).required(),
+  })
+  validateRequest(req, next, schema)
+}
+
+function seedSchema(req, res, next) {
   const schema = Joi.object({
     fingerPrint: Joi.string().length(32).required(),
   })

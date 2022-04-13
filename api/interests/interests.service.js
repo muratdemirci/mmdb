@@ -6,7 +6,7 @@ async function crawlInterests(params) {
         'urlPaths': params.body.urlPaths
     }
 
-    const result = await db.Interest.findOne({ fingerPrint: newInterest.fingerPrint });
+    const result = await db.Interest.findOne({ fingerPrint: newInterest.fingerPrint })
 
     if (result) {
         const urlPathStr = (newInterest.urlPaths[0].path).toString()
@@ -34,10 +34,22 @@ async function crawlInterests(params) {
 }
 
 async function interestFeed(params) {
-    console.log(1231312)
+    const fingerprint = params.body.fingerPrint;
+    // get movies feed from another db
+    const result = await db.Interest.findOne({ fingerPrint: fingerprint })
+    return result.urlPaths
+}
+
+async function interestSeed(params) {
+    //get data from cron merged to database
+    const fingerprint = params.body.fingerPrint;
+    // get movies feed from another db
+    const result = await db.Interest.findOne({ fingerPrint: fingerprint })
+    return result.urlPaths
 }
 
 module.exports = {
     crawlInterests,
-    interestFeed
+    interestSeed,
+    interestFeed,
 }

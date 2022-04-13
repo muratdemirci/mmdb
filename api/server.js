@@ -7,6 +7,8 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const errorHandler = require('_middleware/error-handler')
+// recommendationsCronJob builds new movie recommendations
+const recommendationsCronJob = require('_middleware/recommendations')
 
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }))
